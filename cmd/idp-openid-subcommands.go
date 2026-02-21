@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -47,16 +47,16 @@ FLAGS:
 EXAMPLES:
   1. Create a default OpenID IDP configuration (CFG_NAME is omitted).
      {{.Prompt}} {{.HelpName}} play/ \
-          client_id=minio-client-app \
-          client_secret=minio-client-app-secret \
+          client_id=my-client-app \
+          client_secret=my-client-app-secret \
           config_url="http://localhost:5556/dex/.well-known/openid-configuration" \
           scopes="openid,groups" \
           redirect_uri="http://127.0.0.1:10000/oauth_callback" \
           role_policy="consoleAdmin"
   2. Create OpenID IDP configuration named "dex_test".
      {{.Prompt}} {{.HelpName}} play/ dex_test \
-          client_id=minio-client-app \
-          client_secret=minio-client-app-secret \
+          client_id=my-client-app \
+          client_secret=my-client-app-secret \
           config_url="http://localhost:5556/dex/.well-known/openid-configuration" \
           scopes="openid,groups" \
           redirect_uri="http://127.0.0.1:10000/oauth_callback" \
@@ -77,7 +77,7 @@ func mainIDPOpenIDAddOrUpdate(ctx *cli.Context, update bool) error {
 
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -177,7 +177,7 @@ func idpRemove(ctx *cli.Context, isOpenID bool, cfgName string) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -232,7 +232,7 @@ func idpListCommon(ctx *cli.Context, isOpenID bool) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -384,7 +384,7 @@ func idpInfo(ctx *cli.Context, isOpenID bool, cfgName string) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -511,7 +511,7 @@ func idpEnableDisable(ctx *cli.Context, isOpenID, enable bool) error {
 	}
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

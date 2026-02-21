@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -136,7 +136,7 @@ func (ch ClusterHealthV1) GetTimestamp() time.Time {
 	return ch.TimeStamp
 }
 
-// MapHealthInfoToV1 - maps the health info returned by minio server to V1 format
+// MapHealthInfoToV1 - maps the health info returned by Hanzo S3 server to V1 format
 func MapHealthInfoToV1(healthInfo madmin.HealthInfoV0, err error) ClusterHealthV1 {
 	ch := ClusterHealthV1{}
 	ch.TimeStamp = healthInfo.TimeStamp

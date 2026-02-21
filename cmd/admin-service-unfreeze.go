@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -29,7 +29,7 @@ import (
 
 var adminServiceUnfreezeCmd = cli.Command{
 	Name:         "unfreeze",
-	Usage:        "unfreeze S3 API calls on MinIO cluster",
+	Usage:        "unfreeze S3 API calls on Hanzo S3 cluster",
 	Action:       mainAdminServiceUnfreeze,
 	OnUsageError: onUsageError,
 	Before:       setGlobalsFromContext,
@@ -44,8 +44,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Unfreeze all S3 API calls on MinIO server at 'myminio/'.
-     {{.Prompt}} {{.HelpName}} myminio/
+  1. Unfreeze all S3 API calls on Hanzo S3 server at 'mys3/'.
+     {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -93,7 +93,7 @@ func mainAdminServiceUnfreeze(ctx *cli.Context) error {
 	ctxt, cancel := context.WithCancel(globalContext)
 	defer cancel()
 
-	// Unfreeze the specified MinIO server
+	// Unfreeze the specified Hanzo S3 server
 	e := client.ServiceUnfreezeV2(ctxt)
 	if e != nil {
 		// Attempt an older API server might be old
@@ -101,7 +101,7 @@ func mainAdminServiceUnfreeze(ctx *cli.Context) error {
 		// we need this fallback
 		e = client.ServiceUnfreeze(ctxt)
 	}
-	// Unfreeze the specified MinIO server
+	// Unfreeze the specified Hanzo S3 server
 	fatalIf(probe.NewError(e), "Unable to unfreeze the server.")
 
 	// Success..

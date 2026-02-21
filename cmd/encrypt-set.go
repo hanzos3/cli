@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -46,8 +46,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Enable SSE-KMS auto encryption with KMS key on bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} sse-kms my-minio-key myminio/mybucket
+  1. Enable SSE-KMS auto encryption with KMS key on bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} sse-kms my-minio-key mys3/mybucket
 
   2. Enable SSE-KMS auto encryption with KMS key on bucket "mybucket" for alias "s3".
      {{.Prompt}} {{.HelpName}} sse-kms arn:aws:kms:us-east-1:xxx:key/xxx s3/mybucket  

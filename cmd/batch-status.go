@@ -21,7 +21,7 @@ import (
 
 var batchStatusCmd = cli.Command{
 	Name:            "status",
-	Usage:           "summarize job events on MinIO server in real-time",
+	Usage:           "summarize job events on Hanzo S3 server in real-time",
 	Action:          mainBatchStatus,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,
@@ -38,7 +38,7 @@ FLAGS:
   {{end}}
 EXAMPLES:
    1. Display current in-progress JOB events.
-      {{.Prompt}} {{.HelpName}} myminio/ KwSysDpxcBU9FNhGkn2dCf
+      {{.Prompt}} {{.HelpName}} mys3/ KwSysDpxcBU9FNhGkn2dCf
 `,
 }
 
@@ -73,7 +73,7 @@ func mainBatchStatus(ctx *cli.Context) error {
 	aliasedURL := ctx.Args().Get(0)
 	jobID := ctx.Args().Get(1)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")
 

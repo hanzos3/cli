@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -54,16 +54,16 @@ USAGE:
   Exactly one of --user or --group is required.
 
 POLICY:
-  Name of the policy on the MinIO server.
+  Name of the policy on the Hanzo S3 server.
 
 FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
   1. Attach the "readonly" policy to user "james".
-     {{.Prompt}} {{.HelpName}} myminio readonly --user james
+     {{.Prompt}} {{.HelpName}} mys3 readonly --user james
   2. Attach the "audit-policy" and "acct-policy" policies to group "legal".
-     {{.Prompt}} {{.HelpName}} myminio audit-policy acct-policy --group legal
+     {{.Prompt}} {{.HelpName}} mys3 audit-policy acct-policy --group legal
 `,
 }
 
@@ -90,7 +90,7 @@ func userAttachOrDetachPolicy(ctx *cli.Context, attach bool) error {
 		Policies: policies,
 	}
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -108,8 +108,8 @@ func userAttachOrDetachPolicy(ctx *cli.Context, attach bool) error {
 
 	var emptyResp madmin.PolicyAssociationResp
 	if res.UpdatedAt.Equal(emptyResp.UpdatedAt) {
-		// Older minio does not send a result, so we populate res manually to
-		// simulate a result. TODO(aditya): remove this after newer minio is
+		// Older server does not send a result, so we populate res manually to
+		// simulate a result. TODO(aditya): remove this after newer server is
 		// released in a few months (Older API Deprecated in Jun 2023)
 		if attach {
 			res.PoliciesAttached = policies

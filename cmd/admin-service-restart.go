@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -48,7 +48,7 @@ var serviceRestartFlag = []cli.Flag{
 
 var adminServiceRestartCmd = cli.Command{
 	Name:         "restart",
-	Usage:        "restart a MinIO cluster",
+	Usage:        "restart a Hanzo S3 cluster",
 	Action:       mainAdminServiceRestart,
 	OnUsageError: onUsageError,
 	Before:       setGlobalsFromContext,
@@ -63,7 +63,7 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Restart MinIO server represented by its alias 'play'.
+  1. Restart Hanzo S3 server represented by its alias 'play'.
      {{.Prompt}} {{.HelpName}} play/
 `,
 }
@@ -262,7 +262,7 @@ func mainAdminServiceRestart(ctx *cli.Context) error {
 	go func() {
 		t := time.Now()
 
-		// Restart the specified MinIO server
+		// Restart the specified Hanzo S3 server
 		result, e := client.ServiceAction(ctxt, madmin.ServiceActionOpts{
 			Action: madmin.ServiceActionRestart,
 			DryRun: ctx.Bool("dry-run"),
@@ -304,7 +304,7 @@ func mainAdminServiceRestart(ctx *cli.Context) error {
 				for {
 					healthCtx, healthCancel := context.WithTimeout(ctxt, 2*time.Second)
 
-					// Fetch the health status of the specified MinIO server
+					// Fetch the health status of the specified Hanzo S3 server
 					healthResult, healthErr := anonClient.Healthy(healthCtx, madmin.HealthOpts{})
 					healthCancel()
 

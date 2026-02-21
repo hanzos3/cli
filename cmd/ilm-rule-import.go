@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -45,11 +45,11 @@ DESCRIPTION:
   Import entire lifecycle configuration from STDIN, input file is expected to be in JSON format.
 
 EXAMPLES:
-  1. Set lifecycle configuration for the mybucket on alias 'myminio' to the rules imported from lifecycle.json
-     {{.Prompt}} {{.HelpName}} myminio/mybucket < lifecycle.json
+  1. Set lifecycle configuration for the mybucket on alias 'mys3' to the rules imported from lifecycle.json
+     {{.Prompt}} {{.HelpName}} mys3/mybucket < lifecycle.json
 
-  2. Set lifecycle configuration for the mybucket on alias 'myminio'. User is expected to enter the JSON contents on STDIN
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  2. Set lifecycle configuration for the mybucket on alias 'mys3'. User is expected to enter the JSON contents on STDIN
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 `,
 }
 

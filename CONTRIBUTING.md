@@ -1,17 +1,15 @@
-### Setup your mc Github Repository
-Fork [mc upstream](https://github.com/minio/mc/fork) source repository to your own personal repository.
+### Setup your Hanzo S3 CLI Github Repository
+Fork [cli upstream](https://github.com/hanzos3/cli/fork) source repository to your own personal repository.
 ```
-$ mkdir -p $GOPATH/src/github.com/minio
-$ cd $GOPATH/src/github.com/minio
-$ git clone https://github.com/$USER_ID/mc
-$ cd mc
+$ git clone https://github.com/$USER_ID/cli
+$ cd cli
 $ make
-$ ./mc --help
+$ ./s3 --help
 ```
 
 ###  Developer Guidelines
 
-``mc`` welcomes your contribution. To make the process as seamless as possible, we ask for the following:
+``s3`` welcomes your contribution. To make the process as seamless as possible, we ask for the following:
 
 * Go ahead and fork the project and make your changes. We encourage pull requests to discuss code changes.
     - Fork it
@@ -20,7 +18,7 @@ $ ./mc --help
     - Push to the branch (git push origin my-new-feature)
     - Create new Pull Request
 
-* If you have additional dependencies for ``mc``, ``mc`` manages its dependencies using `go mod`
+* If you have additional dependencies for ``s3``, ``s3`` manages its dependencies using `go mod`
     - Run `go get foo/bar`
     - Edit your code to import foo/bar
     - Run `GO111MODULE=on go mod tidy` from top-level folder
@@ -32,5 +30,5 @@ $ ./mc --help
     - Make sure `make install` completes.
 
 * Read [Effective Go](https://github.com/golang/go/wiki/CodeReviewComments) article from Golang project
-    - `mc` project is conformant with Golang style
+    - `s3` project is conformant with Golang style
     - if you happen to observe offending code, please feel free to send a pull request

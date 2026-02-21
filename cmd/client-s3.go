@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -278,7 +278,7 @@ func newFactory() func(config *Config) (Client, *probe.Error) {
 			// Set app info.
 			api.SetAppInfo(config.AppName, config.AppVersion)
 
-			// Cache the new MinIO Client with hash of config as key.
+			// Cache the new Hanzo S3 Client with hash of config as key.
 			clientCache[confSum] = api
 		}
 
@@ -1121,7 +1121,7 @@ func (c *S3Client) Put(ctx context.Context, reader io.Reader, size int64, progre
 	}
 
 	if putOpts.ifNotExists {
-		// Only supported in newer MinIO releases.
+		// Only supported in newer Hanzo S3 releases.
 		opts.SetMatchETagExcept("*")
 	}
 

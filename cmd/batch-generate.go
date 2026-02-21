@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -50,9 +50,9 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Generate a new batch 'replication' job definition:
-     {{.Prompt}} {{.HelpName}} myminio replicate > replication.yaml
+     {{.Prompt}} {{.HelpName}} mys3 replicate > replication.yaml
   2. List all supported job types:
-     {{.Prompt}} {{.HelpName}} myminio list
+     {{.Prompt}} {{.HelpName}} mys3 list
 `,
 }
 
@@ -72,7 +72,7 @@ func mainBatchGenerate(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	jobType := args.Get(1)
 
-	// Start a new MinIO Admin Client
+	// Start a new Hanzo S3 Admin Client
 	adminClient, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

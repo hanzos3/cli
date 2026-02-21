@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -68,16 +68,16 @@ FLAGS:
 
 EXAMPLES:
    1. Enable legal hold on a specific object
-      $ {{.HelpName}} myminio/mybucket/prefix/obj.csv
+      $ {{.HelpName}} mys3/mybucket/prefix/obj.csv
 
    2. Enable legal hold on a specific object version
-      $ {{.HelpName}} myminio/mybucket/prefix/obj.csv --version-id "HiMFUTOowG6ylfNi4LKxD3ieHbgfgrvC"
+      $ {{.HelpName}} mys3/mybucket/prefix/obj.csv --version-id "HiMFUTOowG6ylfNi4LKxD3ieHbgfgrvC"
 
    3. Enable object legal hold recursively for all objects at a prefix
-      $ {{.HelpName}} myminio/mybucket/prefix --recursive
+      $ {{.HelpName}} mys3/mybucket/prefix --recursive
 
    4. Enable object legal hold recursively for all objects versions older than one year
-      $ {{.HelpName}} myminio/mybucket/prefix --recursive --rewind 365d --versions
+      $ {{.HelpName}} mys3/mybucket/prefix --recursive --rewind 365d --versions
 `,
 }
 

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -52,19 +52,19 @@ EXAMPLES:
   1. Add a lifecycle rule with a transition and a noncurrent version transition action for objects with prefix doc/ whose size is greater than 1MiB in mybucket.
      Tiers must exist in MinIO. Use existing tiers or add new tiers.
 
-     {{.Prompt}} mc ilm tier add minio myminio MINIOTIER-1 --endpoint https://warm-minio-1.com \
+     {{.Prompt}} mc ilm tier add minio mys3 MINIOTIER-1 --endpoint https://warm-minio-1.com \
          --access-key ACCESSKEY --secret-key SECRETKEY --bucket bucket1 --prefix prefix1
 
      {{.Prompt}} {{.HelpName}} --prefix "doc/" --size-gt 1MiB --transition-days "90" --transition-tier "MINIOTIER-1" \
          --noncurrent-transition-days "45" --noncurrent-transition-tier "MINIOTIER-1" \
-         myminio/mybucket/
+         mys3/mybucket/
 
   2. Add a lifecycle rule with an expiration action for all objects in mybucket.
-     {{.Prompt}} {{.HelpName}} --expire-days "200" myminio/mybucket
+     {{.Prompt}} {{.HelpName}} --expire-days "200" mys3/mybucket
 
   3. Add a lifecycle rule with an expiration and a noncurrent version expiration action for all objects with prefix doc/ in mybucket.
      {{.Prompt}} {{.HelpName}} --prefix "doc/" --expire-days "300" --noncurrent-expire-days "100" \
-          myminio/mybucket/
+          mys3/mybucket/
 `,
 }
 
@@ -119,7 +119,7 @@ var ilmAddFlags = []cli.Flag{
 	},
 	cli.StringFlag{
 		Name:   "storage-class",
-		Usage:  "storage class for current version to transition into. MinIO supports tiers configured via `mc-admin-tier-add`.",
+		Usage:  "storage class for current version to transition into. Hanzo S3 supports tiers configured via `mc-admin-tier-add`.",
 		Hidden: true,
 	},
 	cli.StringFlag{

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -51,16 +51,16 @@ FLAGS:
 EXAMPLES:
   The output includes environment variables set on the server. These cannot be overridden from the client.
 
-  1. Get the current region setting on MinIO server.
+  1. Get the current region setting on Hanzo S3 server.
      {{.Prompt}} {{.HelpName}} play/ region
      region name=us-east-1
 
-  2. Get the current notification settings for Webhook target on MinIO server
-     {{.Prompt}} {{.HelpName}} myminio/ notify_webhook
+  2. Get the current notification settings for Webhook target on Hanzo S3 server
+     {{.Prompt}} {{.HelpName}} mys3/ notify_webhook
      notify_webhook endpoint="http://localhost:8080" auth_token= queue_limit=10000 queue_dir="/home/events"
 
-  3. Get the current compression settings on MinIO server
-     {{.Prompt}} {{.HelpName}} myminio/ compression
+  3. Get the current compression settings on Hanzo S3 server
+     {{.Prompt}} {{.HelpName}} mys3/ compression
      compression extensions=".txt,.csv" mime_types="text/*"
 `,
 }
@@ -122,7 +122,7 @@ func mainAdminConfigGet(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

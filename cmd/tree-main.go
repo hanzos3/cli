@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -95,20 +95,20 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-   1. List all buckets and directories on MinIO object storage server in tree format.
-      {{.Prompt}} {{.HelpName}} myminio
+   1. List all buckets and directories on Hanzo S3 object storage server in tree format.
+      {{.Prompt}} {{.HelpName}} mys3
 
-   2. List all directories in "mybucket" on MinIO object storage server in tree format.
-      {{.Prompt}} {{.HelpName}} myminio/mybucket/
+   2. List all directories in "mybucket" on Hanzo S3 object storage server in tree format.
+      {{.Prompt}} {{.HelpName}} mys3/mybucket/
 
-   3. List all directories in "mybucket" on MinIO object storage server hosted on Microsoft Windows in tree format.
-      {{.Prompt}} {{.HelpName}} myminio\mybucket\
+   3. List all directories in "mybucket" on Hanzo S3 object storage server hosted on Microsoft Windows in tree format.
+      {{.Prompt}} {{.HelpName}} mys3\mybucket\
 
-   4. List all directories and objects in "mybucket" on MinIO object storage server in tree format.
-      {{.Prompt}} {{.HelpName}} --files myminio/mybucket/
+   4. List all directories and objects in "mybucket" on Hanzo S3 object storage server in tree format.
+      {{.Prompt}} {{.HelpName}} --files mys3/mybucket/
 
    5. List all directories upto depth level '2' in tree format.
-      {{.Prompt}} {{.HelpName}} --depth 2 myminio/mybucket/
+      {{.Prompt}} {{.HelpName}} --depth 2 mys3/mybucket/
 `,
 }
 

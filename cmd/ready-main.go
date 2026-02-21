@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -63,13 +63,13 @@ FLAGS:
   {{end}}{{end}}
 EXAMPLES:
   1. Check if the cluster is ready or not
-     {{.Prompt}} {{.HelpName}} myminio
+     {{.Prompt}} {{.HelpName}} mys3
 
   2. Check if the cluster has enough read quorum
-     {{.Prompt}} {{.HelpName}} myminio --cluster-read
+     {{.Prompt}} {{.HelpName}} mys3 --cluster-read
 
   3. Check if the cluster is taken down for maintenance
-     {{.Prompt}} {{.HelpName}} myminio --maintenance
+     {{.Prompt}} {{.HelpName}} mys3 --maintenance
 `,
 }
 

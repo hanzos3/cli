@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -161,7 +161,7 @@ func getLicInfoStr(li licInfo) string {
 
 func getAGPLMessage() string {
 	return `License: GNU AGPL v3 <https://www.gnu.org/licenses/agpl-3.0.txt>
-If you are distributing or hosting MinIO along with your proprietary application as combined works, you may require a commercial license included in the Standard and Enterprise subscription plans. (https://min.io/signup?ref=mc)`
+If you are distributing or hosting MinIO along with your proprietary application as combined works, you may require a commercial license included in the Standard and Enterprise subscription plans. (https://hanzo.space/signup?ref=mc)`
 }
 
 func initLicInfoColors() {

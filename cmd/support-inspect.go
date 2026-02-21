@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -72,13 +72,13 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Upload 'xl.meta' of a specific object from all the drives
-     {{.Prompt}} {{.HelpName}} myminio/bucket/test*/xl.meta
+     {{.Prompt}} {{.HelpName}} mys3/bucket/test*/xl.meta
 
   2. Upload recursively all objects at a prefix. NOTE: This can be an expensive operation use it with caution.
-     {{.Prompt}} {{.HelpName}} myminio/bucket/test/**
+     {{.Prompt}} {{.HelpName}} mys3/bucket/test/**
 
   3. Download 'xl.meta' of a specific object from all the drives locally, and upload to SUBNET manually
-     {{.Prompt}} {{.HelpName}} myminio/bucket/test*/xl.meta --airgap
+     {{.Prompt}} {{.HelpName}} mys3/bucket/test*/xl.meta --airgap
 `,
 }
 
@@ -142,7 +142,7 @@ func mainSupportInspect(ctx *cli.Context) error {
 	console.SetColor("File", color.New(color.FgWhite, color.Bold))
 	console.SetColor("Key", color.New(color.FgHiRed, color.Bold))
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")
@@ -171,9 +171,9 @@ func mainSupportInspect(ctx *cli.Context) error {
 			}
 		}
 
-		// Fall back to MinIO public key.
+		// Fall back to Hanzo S3 public key.
 		if len(publicKey) == 0 {
-			// Public key for MinIO confidential information.
+			// Public key for Hanzo S3 confidential information.
 			publicKey, _ = base64.StdEncoding.DecodeString(defaultPublicKey)
 		}
 	}

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -62,7 +62,7 @@ FLAGS:
   {{end}}
 EXAMPLES:
    1. Display net metrics
-      {{.Prompt}} {{.HelpName}} myminio/
+      {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -80,7 +80,7 @@ func mainSupportTopNet(ctx *cli.Context) error {
 	alias, _ := url2Alias(aliasedURL)
 	validateClusterRegistered(alias, false)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

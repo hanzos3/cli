@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -45,7 +45,7 @@ var supportTopLocksFlag = []cli.Flag{
 
 var supportTopLocksCmd = cli.Command{
 	Name:         "locks",
-	Usage:        "list all active locks on a MinIO cluster",
+	Usage:        "list all active locks on a Hanzo S3 cluster",
 	Before:       setGlobalsFromContext,
 	Action:       mainSupportTopLocks,
 	OnUsageError: onUsageError,
@@ -60,8 +60,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. List oldest locks on a MinIO cluster.
-     {{.Prompt}} {{.HelpName}} myminio/
+  1. List oldest locks on a Hanzo S3 cluster.
+     {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -74,7 +74,7 @@ type lockMessage struct {
 // String colorized oldest locks message.
 func (u lockMessage) String() string {
 	elapsed := u.Lock.Elapsed
-	// elapsed can be zero with older MinIO versions,
+	// elapsed can be zero with older Hanzo S3 versions,
 	// so this code is deprecated and can be removed later.
 	if elapsed == 0 {
 		elapsed = time.Now().UTC().Sub(u.Lock.Timestamp)
@@ -146,7 +146,7 @@ func mainSupportTopLocks(ctx *cli.Context) error {
 	console.SetColor("Lock", color.New(color.FgBlue, color.Bold))
 	console.SetColor("Headers", color.New(color.FgGreen, color.Bold))
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

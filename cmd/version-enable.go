@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -57,15 +57,15 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Enable versioning on bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  1. Enable versioning on bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 
   2. Enable versioning on bucket "mybucket" while excluding versioning on a few select prefixes.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --excluded-prefixes "app1/*/_temporary/,app2/*/_staging/"
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --excluded-prefixes "app1/*/_temporary/,app2/*/_staging/"
 
   3. Enable versioning on bucket "mybucket" while excluding versioning on a few select prefixes and all folders.
      Note: this is useful on buckets used with Spark/Hadoop workloads.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --excluded-prefixes "app1/*/_temporary/,app2/*/_staging/" --exclude-folders
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --excluded-prefixes "app1/*/_temporary/,app2/*/_staging/" --exclude-folders
 `,
 }
 

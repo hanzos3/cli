@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -30,7 +30,7 @@ var adminReplicateSubcommands = []cli.Command{
 
 var adminReplicateCmd = cli.Command{
 	Name:            "replicate",
-	Usage:           "manage MinIO site replication",
+	Usage:           "manage Hanzo S3 site replication",
 	Action:          mainAdminReplicate,
 	Before:          setGlobalsFromContext,
 	Flags:           globalFlags,

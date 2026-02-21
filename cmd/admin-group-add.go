@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -47,11 +47,11 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Add users 'fivecent' and 'tencent' to the group 'allcents':
-     {{.Prompt}} {{.HelpName}} myminio allcents fivecent tencent
+     {{.Prompt}} {{.HelpName}} mys3 allcents fivecent tencent
 
   2. Add user "james" to group "staff", then add the "readwrite" policy to the group "staff".
-     {{.Prompt}} {{.HelpName}} myminio staff james
-     {{.Prompt}} mc admin policy attach myminio readwrite --group staff
+     {{.Prompt}} {{.HelpName}} mys3 staff james
+     {{.Prompt}} mc admin policy attach mys3 readwrite --group staff
 `,
 }
 
@@ -124,7 +124,7 @@ func mainAdminGroupAdd(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

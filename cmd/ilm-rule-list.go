@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -64,17 +64,17 @@ DESCRIPTION:
   List lifecycle configuration rules set on a bucket.
 
 EXAMPLES:
-  1. List the lifecycle management rules (all fields) for mybucket on alias 'myminio'.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  1. List the lifecycle management rules (all fields) for mybucket on alias 'mys3'.
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 
-  2. List the lifecycle management rules (expration date/days fields) for mybucket on alias 'myminio'.
-     {{.Prompt}} {{.HelpName}} --expiry myminio/mybucket
+  2. List the lifecycle management rules (expration date/days fields) for mybucket on alias 'mys3'.
+     {{.Prompt}} {{.HelpName}} --expiry mys3/mybucket
 
-  3. List the lifecycle management rules (transition date/days, storage class fields) for mybucket on alias 'myminio'.
-     {{.Prompt}} {{.HelpName}} --transition myminio/mybucket
+  3. List the lifecycle management rules (transition date/days, storage class fields) for mybucket on alias 'mys3'.
+     {{.Prompt}} {{.HelpName}} --transition mys3/mybucket
 
-  4. List the lifecycle management rules in JSON format for mybucket on alias 'myminio'.
-     {{.Prompt}} {{.HelpName}} --json myminio/mybucket
+  4. List the lifecycle management rules in JSON format for mybucket on alias 'mys3'.
+     {{.Prompt}} {{.HelpName}} --json mys3/mybucket
 `,
 }
 

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -59,11 +59,11 @@ FLAGS:
    {{range .VisibleFlags}}{{.}}
    {{end}}
 EXAMPLES:
-  1. Re-replicate previously replicated objects in bucket "mybucket" for alias "myminio" for remote target.
-   {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket "arn:minio:replication::xxx:mybucket"
+  1. Re-replicate previously replicated objects in bucket "mybucket" for alias "mys3" for remote target.
+   {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket "arn:minio:replication::xxx:mybucket"
 
   2. Re-replicate all objects older than 60 days in bucket "mybucket" for remote bucket target.
-   {{.Prompt}} {{.HelpName}} myminio/mybucket --older-than 60d --remote-bucket "arn:minio:replication::xxx:mybucket"
+   {{.Prompt}} {{.HelpName}} mys3/mybucket --older-than 60d --remote-bucket "arn:minio:replication::xxx:mybucket"
 `,
 }
 

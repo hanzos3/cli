@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ var adminTopSubcommands = []cli.Command{
 
 var adminTopCmd = cli.Command{
 	Name:            "top",
-	Usage:           "provide top like statistics for MinIO",
+	Usage:           "provide top like statistics for Hanzo S3",
 	Action:          mainAdminTop,
 	Before:          setGlobalsFromContext,
 	Flags:           globalFlags,

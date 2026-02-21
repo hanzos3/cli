@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -45,7 +45,7 @@ import (
 
 const (
 	subnetRespBodyLimit     = 1 << 20 // 1 MiB
-	minioSubscriptionURL    = "https://min.io/subscription"
+	minioSubscriptionURL    = "https://hanzo.space/subscription"
 	subnetPublicKeyPath     = "/downloads/license-pubkey.pem"
 	minioDeploymentIDHeader = "x-minio-deployment-id"
 )
@@ -109,7 +109,7 @@ func checkURLReachable(url string) *probe.Error {
 
 func subnetURLWithAuth(reqURL, apiKey string) (string, map[string]string, error) {
 	if len(apiKey) == 0 {
-		// API key not available in minio/mc config.
+		// API key not available in Hanzo S3 config.
 		// Ask the user to log in to get auth token
 		token, e := subnetLogin()
 		if e != nil {
@@ -307,7 +307,7 @@ func getKeyFromSubnetConfig(alias, key string) (string, bool) {
 }
 
 func getSubnetAPIKeyFromConfig(alias string) string {
-	// get the subnet api_key config from MinIO if available
+	// get the subnet api_key config from Hanzo S3 if available
 	apiKey, supported := getKeyFromSubnetConfig(alias, "api_key")
 	if supported {
 		return apiKey
@@ -335,7 +335,7 @@ func setGlobalSubnetProxyFromConfig(alias string) error {
 		proxy, supported = getKeyFromSubnetConfig(alias, "proxy")
 	}
 
-	// get the subnet proxy config from MinIO if available
+	// get the subnet proxy config from Hanzo S3 if available
 	if supported && len(proxy) > 0 {
 		proxyURL, e := url.Parse(proxy)
 		if e != nil {
@@ -347,7 +347,7 @@ func setGlobalSubnetProxyFromConfig(alias string) error {
 }
 
 func getSubnetLicenseFromConfig(alias string) string {
-	// get the subnet license config from MinIO if available
+	// get the subnet license config from Hanzo S3 if available
 	lic, supported := getKeyFromSubnetConfig(alias, "license")
 	if supported {
 		return lic
@@ -366,7 +366,7 @@ func mcConfig() *configV10 {
 
 func minioConfigSupportsSubSys(client *madmin.AdminClient, subSys string) bool {
 	help, e := client.HelpConfigKV(globalContext, "", "", false)
-	fatalIf(probe.NewError(e), "Unable to get minio config keys")
+	fatalIf(probe.NewError(e), "Unable to get Hanzo S3 config keys")
 
 	for _, h := range help.KeysHelp {
 		if h.Key == subSys {
@@ -400,7 +400,7 @@ func setSubnetConfig(alias, subKey, cfgVal string) {
 
 	cfgKey := "subnet " + subKey
 	_, e := client.SetConfigKV(globalContext, cfgKey+"="+cfgVal)
-	fatalIf(probe.NewError(e), "Unable to set "+cfgKey+" config on MinIO")
+	fatalIf(probe.NewError(e), "Unable to set "+cfgKey+" config on Hanzo S3")
 }
 
 func setSubnetAPIKey(alias, apiKey string) {
@@ -640,9 +640,9 @@ func unregisterClusterFromSubnet(depID, apiKey string) error {
 	return e
 }
 
-// validateAndSaveLic - validates the given license in minio config
+// validateAndSaveLic - validates the given license in Hanzo S3 config
 // If the license contains api key and the saveApiKey arg is true,
-// api key is also saved in the minio config
+// api key is also saved in the Hanzo S3 config
 func validateAndSaveLic(lic, alias string, saveAPIKey bool) string {
 	li, e := parseLicense(lic)
 	fatalIf(probe.NewError(e), "Error parsing license")
@@ -663,7 +663,7 @@ func validateAndSaveLic(lic, alias string, saveAPIKey bool) string {
 	return li.APIKey
 }
 
-// extractAndSaveSubnetCreds - extract license from response and set it in minio config
+// extractAndSaveSubnetCreds - extract license from response and set it in Hanzo S3 config
 func extractAndSaveSubnetCreds(alias, resp string) (string, string, error) {
 	parsedResp := gjson.Parse(resp)
 

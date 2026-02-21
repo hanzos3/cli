@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -54,11 +54,11 @@ FLAGS:
    {{range .VisibleFlags}}{{.}}
    {{end}}
 EXAMPLES:
-  1. Status of replication resync in bucket "mybucket" under alias "myminio" for all targets.
-   {{.Prompt}} {{.HelpName}} myminio/mybucket
+  1. Status of replication resync in bucket "mybucket" under alias "mys3" for all targets.
+   {{.Prompt}} {{.HelpName}} mys3/mybucket
 
   2. Status of replication resync in bucket "mybucket" under specific remote bucket target.
-   {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket "arn:minio:replication::xxx:mybucket"
+   {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket "arn:minio:replication::xxx:mybucket"
 `,
 }
 

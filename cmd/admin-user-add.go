@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -54,24 +54,24 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Add a new user 'foobar' to MinIO server.
+  1. Add a new user 'foobar' to Hanzo S3 server.
      {{.DisableHistory}}
-     {{.Prompt}} {{.HelpName}} myminio foobar foo12345
+     {{.Prompt}} {{.HelpName}} mys3 foobar foo12345
      {{.EnableHistory}}
 
-  2. Add a new user 'foobar' to MinIO server, prompting for keys.
-     {{.Prompt}} {{.HelpName}} myminio
+  2. Add a new user 'foobar' to Hanzo S3 server, prompting for keys.
+     {{.Prompt}} {{.HelpName}} mys3
      Enter Access Key: foobar
      Enter Secret Key: foobar12345
 
-  3. Add a new user 'foobar' to MinIO server using piped keys.
+  3. Add a new user 'foobar' to Hanzo S3 server using piped keys.
      {{.DisableHistory}}
-     {{.Prompt}} echo -e "foobar\nfoobar12345" | {{.HelpName}} myminio
+     {{.Prompt}} echo -e "foobar\nfoobar12345" | {{.HelpName}} mys3
      {{.EnableHistory}}
 
-  4. Add a new user 'foobar' to MinIO server, then attach IAM policy "writeonly".
-     {{.Prompt}} {{.HelpName}} myminio foobar foo12345 
-     {{.Prompt}} mc admin policy attach myminio writeonly --user foobar
+  4. Add a new user 'foobar' to Hanzo S3 server, then attach IAM policy "writeonly".
+     {{.Prompt}} {{.HelpName}} mys3 foobar foo12345 
+     {{.Prompt}} mc admin policy attach mys3 writeonly --user foobar
 `,
 }
 
@@ -197,7 +197,7 @@ func mainAdminUserAdd(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	accessKey, secretKey := fetchUserKeys(args)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

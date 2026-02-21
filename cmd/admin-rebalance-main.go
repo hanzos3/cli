@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ var adminRebalanceSubcommands = []cli.Command{
 
 var adminRebalanceCmd = cli.Command{
 	Name:            "rebalance",
-	Usage:           "Manage MinIO rebalance",
+	Usage:           "Manage Hanzo S3 rebalance",
 	Action:          mainAdminRebalance,
 	Before:          setGlobalsFromContext,
 	Flags:           globalFlags,

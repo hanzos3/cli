@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -267,7 +267,7 @@ func statURL(ctx context.Context, targetURL, versionID string, timeRef time.Time
 
 			adminClient, _ := newAdminClient(targetURL)
 			if adminClient != nil {
-				// Create a new MinIO Admin Client
+				// Create a new Hanzo S3 Admin Client
 				duinfo, e := adminClient.DataUsageInfo(ctx)
 				if e == nil {
 					bu = duinfo.BucketsUsage[bstat.Key]

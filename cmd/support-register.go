@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -24,13 +24,13 @@ import (
 var supportRegisterFlags = append([]cli.Flag{
 	cli.StringFlag{
 		Name:  "name",
-		Usage: "Specify the name to associate to this MinIO cluster in SUBNET",
+		Usage: "Specify the name to associate to this Hanzo S3 cluster in SUBNET",
 	},
 }, subnetCommonFlags...)
 
 var supportRegisterCmd = cli.Command{
 	Name:               "register",
-	Usage:              "register with MinIO subscription network",
+	Usage:              "register with Hanzo S3 subscription network",
 	OnUsageError:       onUsageError,
 	Action:             mainSupportRegister,
 	Before:             setGlobalsFromContext,

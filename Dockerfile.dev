@@ -1,8 +1,8 @@
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.8
 
-LABEL maintainer="MinIO Inc <dev@min.io>"
+LABEL maintainer="Hanzo AI, Inc. <dev@hanzo.ai>"
 
-COPY mc /usr/bin/
+COPY s3 /usr/bin/
 COPY CREDITS /licenses/CREDITS
 COPY LICENSE /licenses/LICENSE
 
@@ -11,4 +11,4 @@ RUN  \
      microdnf install ca-certificates --nodocs --assumeyes && \
      microdnf clean all
 
-ENTRYPOINT ["mc"]
+ENTRYPOINT ["s3"]

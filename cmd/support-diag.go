@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -84,14 +84,14 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Upload MinIO diagnostics report for cluster with alias 'myminio' to SUBNET
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Upload Hanzo S3 diagnostics report for cluster with alias 'mys3' to SUBNET
+     {{.Prompt}} {{.HelpName}} mys3
 
-  2. Generate MinIO diagnostics report for cluster with alias 'myminio', save and upload to SUBNET manually
-     {{.Prompt}} {{.HelpName}} myminio --airgap
+  2. Generate Hanzo S3 diagnostics report for cluster with alias 'mys3', save and upload to SUBNET manually
+     {{.Prompt}} {{.HelpName}} mys3 --airgap
 
-  3. Upload MinIO diagnostics report for cluster with alias 'myminio' to SUBNET, with strict anonymization
-     {{.Prompt}} {{.HelpName}} myminio --anonymize=strict
+  3. Upload Hanzo S3 diagnostics report for cluster with alias 'mys3' to SUBNET, with strict anonymization
+     {{.Prompt}} {{.HelpName}} mys3 --anonymize=strict
 `,
 }
 
@@ -101,7 +101,7 @@ type supportDiagMessage struct {
 
 // String colorized status message
 func (s supportDiagMessage) String() string {
-	return console.Colorize(supportSuccessMsgTag, "MinIO diagnostics report was successfully uploaded to SUBNET.")
+	return console.Colorize(supportSuccessMsgTag, "Hanzo S3 diagnostics report was successfully uploaded to SUBNET.")
 }
 
 // JSON jsonified status message
@@ -122,7 +122,7 @@ func checkSupportDiagSyntax(ctx *cli.Context) {
 	}
 }
 
-// compress and tar MinIO diagnostics output
+// compress and tar Hanzo S3 diagnostics output
 func tarGZ(healthInfo any, version, filename string) error {
 	data, e := TarGZHealthInfo(healthInfo, version)
 	if e != nil {
@@ -143,13 +143,13 @@ func tarGZ(healthInfo any, version, filename string) error {
 		warningMsgHeader := infoText(warningMsgBoundary)
 		warningMsgTrailer := infoText(warningMsgBoundary)
 		console.Printf("%s\n%s\n%s\n%s\n", warningMsgHeader, warning, warningContents, warningMsgTrailer)
-		console.Infoln("MinIO diagnostics report saved at ", filename)
+		console.Infoln("Hanzo S3 diagnostics report saved at ", filename)
 	}
 
 	return nil
 }
 
-// TarGZHealthInfo - compress and tar MinIO diagnostics output
+// TarGZHealthInfo - compress and tar Hanzo S3 diagnostics output
 func TarGZHealthInfo(healthInfo any, version string) ([]byte, error) {
 	buffer := bytes.NewBuffer(nil)
 	gzWriter := gzip.NewWriter(buffer)
@@ -201,7 +201,7 @@ func mainSupportDiag(ctx *cli.Context) error {
 		apiKey = validateClusterRegistered(alias, true)
 	}
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client := getClient(aliasedURL)
 
 	// Main execution
@@ -239,7 +239,7 @@ func execSupportDiag(ctx *cli.Context, client *madmin.AdminClient, alias, apiKey
 	}
 
 	e = tarGZ(healthInfo, version, filename)
-	fatalIf(probe.NewError(e), "Unable to save MinIO diagnostics report")
+	fatalIf(probe.NewError(e), "Unable to save Hanzo S3 diagnostics report")
 
 	if !globalAirgapped {
 		_, e = (&SubnetFileUploader{
@@ -249,7 +249,7 @@ func execSupportDiag(ctx *cli.Context, client *madmin.AdminClient, alias, apiKey
 			Headers:           headers,
 			DeleteAfterUpload: true,
 		}).UploadFileToSubnet()
-		fatalIf(probe.NewError(e), "Unable to upload MinIO diagnostics report to SUBNET portal")
+		fatalIf(probe.NewError(e), "Unable to upload Hanzo S3 diagnostics report to SUBNET portal")
 
 		printMsg(supportDiagMessage{})
 	}
@@ -398,7 +398,7 @@ func fetchServerDiagInfo(ctx *cli.Context, client *madmin.AdminClient) (any, str
 			progressV0(info)
 		}
 
-		// Old minio versions don't return the MinIO info in
+		// Old server versions that do not return the server info in
 		// response of the healthinfo api. So fetch it separately
 		minioInfo, e := client.ServerInfo(globalContext)
 		if e != nil {

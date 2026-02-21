@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -74,19 +74,19 @@ FLAGS:
 
 EXAMPLES:
   1. Restore one specific object
-     {{.Prompt}} {{.HelpName}} myminio/mybucket/path/to/object
+     {{.Prompt}} {{.HelpName}} mys3/mybucket/path/to/object
 
   2. Restore a specific object version
-     {{.Prompt}} {{.HelpName}} --vid "CL3sWgdSN2pNntSf6UnZAuh2kcu8E8si" myminio/mybucket/path/to/object
+     {{.Prompt}} {{.HelpName}} --vid "CL3sWgdSN2pNntSf6UnZAuh2kcu8E8si" mys3/mybucket/path/to/object
 
   3. Restore all objects under a specific prefix
-     {{.Prompt}} {{.HelpName}} --recursive myminio/mybucket/dir/
+     {{.Prompt}} {{.HelpName}} --recursive mys3/mybucket/dir/
 
   4. Restore all objects with all versions under a specific prefix
-     {{.Prompt}} {{.HelpName}} --recursive --versions myminio/mybucket/dir/
+     {{.Prompt}} {{.HelpName}} --recursive --versions mys3/mybucket/dir/
 
   5. Restore an SSE-C encrypted object.
-     {{.Prompt}} {{.HelpName}} --enc-c "myminio/mybucket/=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" myminio/mybucket/myobject.txt
+     {{.Prompt}} {{.HelpName}} --enc-c "mys3/mybucket/=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" mys3/mybucket/myobject.txt
 `,
 }
 

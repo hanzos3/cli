@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -79,12 +79,12 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Show most recent replication failures on "myminio" alias for objects in bucket "mybucket"
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  1. Show most recent replication failures on "mys3" alias for objects in bucket "mybucket"
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 
-  2. Show all unreplicated objects on "myminio" alias for objects in prefix "path/to/prefix" of "mybucket" for all targets.
+  2. Show all unreplicated objects on "mys3" alias for objects in prefix "path/to/prefix" of "mybucket" for all targets.
      This will perform full listing of all objects in the prefix to find unreplicated objects.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket/path/to/prefix --full
+     {{.Prompt}} {{.HelpName}} mys3/mybucket/path/to/prefix --full
 `,
 }
 
@@ -516,7 +516,7 @@ func mainReplicateBacklog(cliCtx *cli.Context) error {
 	ctx, cancel := context.WithCancel(globalContext)
 	defer cancel()
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, cerr := newAdminClient(aliasedURL)
 	fatalIf(cerr, "Unable to initialize admin connection.")
 	if !cliCtx.Bool("full") {

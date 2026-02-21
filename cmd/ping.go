@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -87,16 +87,16 @@ FLAGS:
   {{end}}{{end}}
 EXAMPLES:
   1. Return Latency and liveness probe.
-     {{.Prompt}} {{.HelpName}} myminio
+     {{.Prompt}} {{.HelpName}} mys3
 
   2. Return Latency and liveness probe 5 number of times.
-     {{.Prompt}} {{.HelpName}} --count 5 myminio
+     {{.Prompt}} {{.HelpName}} --count 5 mys3
 
   3. Return Latency and liveness with wait interval set to 30 seconds.
-     {{.Prompt}} {{.HelpName}} --interval 30 myminio
+     {{.Prompt}} {{.HelpName}} --interval 30 mys3
 
   4. Stop pinging when error count > 20.
-     {{.Prompt}} {{.HelpName}} --error-count 20 myminio
+     {{.Prompt}} {{.HelpName}} --error-count 20 mys3
 `,
 }
 
@@ -236,7 +236,7 @@ type ServerStats struct {
 
 func fetchAdminInfo(admClnt *madmin.AdminClient) (madmin.InfoMessage, error) {
 	ctx, cancel := context.WithTimeout(globalContext, 3*time.Second)
-	// Fetch the service status of the specified MinIO server
+	// Fetch the service status of the specified Hanzo S3 server
 	info, e := admClnt.ServerInfo(ctx)
 	cancel()
 	if e == nil {

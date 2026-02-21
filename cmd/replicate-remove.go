@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -61,11 +61,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Remove replication configuration rule on bucket "mybucket" for alias "myminio" with rule id "bsib5mgt874bi56l0fmg".
-     {{.Prompt}} {{.HelpName}} --id "bsib5mgt874bi56l0fmg" myminio/mybucket
+  1. Remove replication configuration rule on bucket "mybucket" for alias "mys3" with rule id "bsib5mgt874bi56l0fmg".
+     {{.Prompt}} {{.HelpName}} --id "bsib5mgt874bi56l0fmg" mys3/mybucket
 
-  2. Remove all the replication configuration rules on bucket "mybucket" for alias "myminio". --force flag is required.
-     {{.Prompt}} {{.HelpName}} --all --force myminio/mybucket
+  2. Remove all the replication configuration rules on bucket "mybucket" for alias "mys3". --force flag is required.
+     {{.Prompt}} {{.HelpName}} --all --force mys3/mybucket
 `,
 }
 

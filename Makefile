@@ -6,7 +6,7 @@ TARGET_GOARCH ?= $(shell go env GOARCH)
 TARGET_GOOS ?= $(shell go env GOOS)
 
 VERSION ?= $(shell git describe --tags)
-TAG ?= "minio/mc:$(VERSION)"
+TAG ?= "ghcr.io/hanzos3/cli:$(VERSION)"
 
 GOLANGCI = $(GOPATH)/bin/golangci-lint
 
@@ -40,7 +40,7 @@ lint: getdeps
 	@echo "Running $@ check"
 	@$(GOLANGCI) run --build-tags kqueue --timeout=10m --config ./.golangci.yml
 
-# Builds mc, runs the verifiers then runs the tests.
+# Builds s3 CLI, runs the verifiers then runs the tests.
 check: test
 test: verifiers build
 	@echo "Running unit tests"
@@ -52,51 +52,50 @@ test-race: verifiers build
 	@echo "Running unit tests under -race"
 	@GO111MODULE=on go test -race -v --timeout 20m ./... 1>/dev/null
 
-# Verify mc binary
+# Verify s3 binary
 verify:
 	@echo "Verifying build with race"
-	@GO111MODULE=on CGO_ENABLED=1 go build -race -tags kqueue -trimpath --ldflags "$(LDFLAGS)" -o $(PWD)/mc 1>/dev/null
+	@GO111MODULE=on CGO_ENABLED=1 go build -race -tags kqueue -trimpath --ldflags "$(LDFLAGS)" -o $(PWD)/s3 1>/dev/null
 	@echo "Running functional tests"
 	@GO111MODULE=on MC_TEST_RUN_FULL_SUITE=true go test -race -v --timeout 20m ./... -run Test_FullSuite
 
-# Builds mc locally.
+# Builds s3 locally.
 build: checks
-	@echo "Building mc binary to './mc'"
-	@GO111MODULE=on GOOS=$(TARGET_GOOS) GOARCH=$(TARGET_GOARCH) CGO_ENABLED=0 go build -trimpath -tags kqueue --ldflags "$(LDFLAGS)" -o $(PWD)/mc
+	@echo "Building s3 binary to './s3'"
+	@GO111MODULE=on GOOS=$(TARGET_GOOS) GOARCH=$(TARGET_GOARCH) CGO_ENABLED=0 go build -trimpath -tags kqueue --ldflags "$(LDFLAGS)" -o $(PWD)/s3
 
 hotfix-vars:
 	$(eval LDFLAGS := $(shell MC_RELEASE="RELEASE" MC_HOTFIX="hotfix.$(shell git rev-parse --short HEAD)" go run buildscripts/gen-ldflags.go $(shell git describe --tags --abbrev=0 | \
     sed 's#RELEASE\.\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)T\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)Z#\1-\2-\3T\4:\5:\6Z#')))
 	$(eval VERSION := $(shell git describe --tags --abbrev=0).hotfix.$(shell git rev-parse --short HEAD))
-	$(eval TAG := "minio/mc:$(VERSION)")
+	$(eval TAG := "ghcr.io/hanzos3/cli:$(VERSION)")
 
-hotfix: hotfix-vars install ## builds mc binary with hotfix tags
-	@mv -f ./mc ./mc.$(VERSION)
-	@minisign -qQSm ./mc.$(VERSION) -s "${CRED_DIR}/minisign.key" < "${CRED_DIR}/minisign-passphrase"
-	@sha256sum < ./mc.$(VERSION) | sed 's, -,mc.$(VERSION),g' > mc.$(VERSION).sha256sum
+hotfix: hotfix-vars install ## builds s3 binary with hotfix tags
+	@mv -f ./s3 ./s3.$(VERSION)
+	@minisign -qQSm ./s3.$(VERSION) -s "${CRED_DIR}/minisign.key" < "${CRED_DIR}/minisign-passphrase"
+	@sha256sum < ./s3.$(VERSION) | sed 's, -,s3.$(VERSION),g' > s3.$(VERSION).sha256sum
 
 hotfix-push: hotfix
-	@scp -q -r mc.$(VERSION)* minio@dl-0.min.io:~/releases/client/mc/hotfixes/$(TARGET_GOOS)-$(TARGET_GOARCH)/archive/
-	@scp -q -r mc.$(VERSION)* minio@dl-1.min.io:~/releases/client/mc/hotfixes/$(TARGET_GOOS)-$(TARGET_GOARCH)/archive/
-	@echo "Published new hotfix binaries at https://dl.min.io/client/mc/hotfixes/$(TARGET_GOOS)-$(TARGET_GOARCH)/archive/mc.$(VERSION)"
+	@scp -q -r s3.$(VERSION)* minio@s3.hanzo.ai:~/releases/client/s3/hotfixes/$(TARGET_GOOS)-$(TARGET_GOARCH)/archive/
+	@echo "Published new hotfix binaries at https://s3.hanzo.ai/client/s3/hotfixes/$(TARGET_GOOS)-$(TARGET_GOARCH)/archive/s3.$(VERSION)"
 
 docker-hotfix-push: docker-hotfix
 	@docker push -q $(TAG) && echo "Published new container $(TAG)"
 
-docker-hotfix: hotfix-push checks ## builds mc docker container with hotfix tags
-	@echo "Building mc docker image '$(TAG)'"
+docker-hotfix: hotfix-push checks ## builds s3 docker container with hotfix tags
+	@echo "Building s3 docker image '$(TAG)'"
 	@docker build -q --no-cache -t $(TAG) --build-arg RELEASE=$(VERSION) . -f Dockerfile.hotfix
 
-# Builds MinIO and installs it to $GOPATH/bin.
+# Builds and installs s3 to $GOPATH/bin.
 install: build
-	@echo "Installing mc binary to '$(GOPATH)/bin/mc'"
-	@mkdir -p $(GOPATH)/bin && cp -f $(PWD)/mc $(GOPATH)/bin/mc
-	@echo "Installation successful. To learn more, try \"mc --help\"."
+	@echo "Installing s3 binary to '$(GOPATH)/bin/s3'"
+	@mkdir -p $(GOPATH)/bin && cp -f $(PWD)/s3 $(GOPATH)/bin/s3
+	@echo "Installation successful. To learn more, try \"s3 --help\"."
 
 clean:
 	@echo "Cleaning up all the generated files"
 	@find . -name '*.test' | xargs rm -fv
 	@find . -name '*~' | xargs rm -fv
-	@rm -rvf mc
+	@rm -rvf s3
 	@rm -rvf build
 	@rm -rvf release

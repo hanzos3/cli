@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -39,7 +39,7 @@ var (
 		},
 		cli.BoolFlag{
 			Name:  "enc",
-			Usage: "encrypt content with key only accessible to minio employees",
+			Usage: "encrypt content with key only accessible to Hanzo S3 operators",
 		},
 		cli.BoolFlag{
 			Name:   "dev",
@@ -84,11 +84,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Upload file './trace.log' for cluster 'myminio' to SUBNET issue number 10
-     {{.Prompt}} {{.HelpName}} --issue 10 myminio ./trace.log
+  1. Upload file './trace.log' for cluster 'mys3' to SUBNET issue number 10
+     {{.Prompt}} {{.HelpName}} --issue 10 mys3 ./trace.log
 
-  2. Upload file './trace.log' for cluster 'myminio' to SUBNET issue number 10 with comment 'here is the trace log'
-     {{.Prompt}} {{.HelpName}} --issue 10 --comment "here is the trace log" myminio ./trace.log 
+  2. Upload file './trace.log' for cluster 'mys3' to SUBNET issue number 10 with comment 'here is the trace log'
+     {{.Prompt}} {{.HelpName}} --issue 10 --comment "here is the trace log" mys3 ./trace.log 
 `,
 }
 

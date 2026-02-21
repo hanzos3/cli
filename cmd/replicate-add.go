@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -121,24 +121,24 @@ EXAMPLES:
      {{.Prompt}} {{.HelpName}} sourceminio/sourcebucket --remote-bucket targetminio/targetbucket \
          --priority 1 
 
-  2. Add replication configuration rule on bucket "mybucket" for alias "myminio" to replicate all operations in an active-active replication setup.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket \
+  2. Add replication configuration rule on bucket "mybucket" for alias "mys3" to replicate all operations in an active-active replication setup.
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket \
          --priority 1 
 
-  3. Add replication configuration rule on bucket "mybucket" for alias "myminio" to replicate all objects with tags
+  3. Add replication configuration rule on bucket "mybucket" for alias "mys3" to replicate all objects with tags
      "key1=value1, key2=value2" to targetbucket synchronously with bandwidth set to 2 gigabits per second. 
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
          --tags "key1=value1&key2=value2" --bandwidth "2G" --sync \
          --priority 1
 
-  4. Disable a replication configuration rule on bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
+  4. Disable a replication configuration rule on bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
          --tags "key1=value1&key2=value2" \
          --priority 1 --disable
 
   5. Add replication configuration rule with existing object replication, delete marker replication and versioned deletes
-     enabled on bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} myminio/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
+     enabled on bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} mys3/mybucket --remote-bucket https://foobar:foo12345@minio.siteb.example.com/targetbucket  \
          --replicate "existing-objects,delete,delete-marker" \
          --priority 1
 `,
@@ -294,7 +294,7 @@ func mainReplicateAdd(cliCtx *cli.Context) error {
 	default:
 		fatalIf(err.Trace(args...), "replication is not supported for filesystem")
 	}
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	admclient, cerr := newAdminClient(aliasedURL)
 	fatalIf(cerr, "unable to initialize admin connection.")
 

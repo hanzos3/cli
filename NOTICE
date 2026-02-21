@@ -1,9 +1,12 @@
-MinIO Client (C) 2014-2020 MinIO, Inc.
+Hanzo S3 CLI (C) 2024-2026 Hanzo AI, Inc.
 
-This product includes software developed at MinIO, Inc.
+This product includes software developed at Hanzo AI, Inc.
+(https://hanzo.ai/).
+
+This product is based on MinIO Client, originally developed at MinIO, Inc.
 (https://min.io/).
 
-The MinIO project contains unmodified/modified subcomponents too with
+The project contains unmodified/modified subcomponents too with
 separate copyright notices and license terms. Your use of the source
 code for the these subcomponents is subject to the terms and conditions
 of the following licenses.

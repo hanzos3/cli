@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -144,7 +144,7 @@ func mainAdminServerUpdate(ctx *cli.Context) error {
 		}
 	}
 
-	// Update the specified MinIO server, optionally also
+	// Update the specified Hanzo S3 server, optionally also
 	// with the provided update URL.
 	us, e := client.ServerUpdateV2(globalContext, madmin.ServerUpdateOpts{
 		DryRun:    ctx.Bool("dry-run"),

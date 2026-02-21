@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -46,13 +46,13 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Enable webhook notification target for MinIO server.
-     {{.Prompt}} {{.HelpName}} myminio/ notify_webhook endpoint="http://localhost:8080/minio/events"
+  1. Enable webhook notification target for Hanzo S3 server.
+     {{.Prompt}} {{.HelpName}} mys3/ notify_webhook endpoint="http://localhost:8080/s3/events"
 
-  2. Change region name for the MinIO server to 'us-west-1'.
-     {{.Prompt}} {{.HelpName}} myminio/ region name=us-west-1
+  2. Change region name for the Hanzo S3 server to 'us-west-1'.
+     {{.Prompt}} {{.HelpName}} mys3/ region name=us-west-1
 
-  3. Change healing settings on a distributed MinIO server setup.
+  3. Change healing settings on a distributed Hanzo S3 server setup.
      {{.Prompt}} {{.HelpName}} mydist/ heal max_delay=300ms max_io=50
 `,
 }
@@ -104,7 +104,7 @@ func mainAdminConfigSet(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

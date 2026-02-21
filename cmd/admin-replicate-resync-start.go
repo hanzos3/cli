@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -48,8 +48,8 @@ FLAGS:
   {{end}}
 
 EXAMPLES:
-  1. Resync bucket data from minio1 to minio2
-     {{.Prompt}} {{.HelpName}} minio1 minio2
+  1. Resync bucket data from site1 to site2
+     {{.Prompt}} {{.HelpName}} site1 site2
 `,
 }
 
@@ -87,7 +87,7 @@ func mainAdminReplicateResyncStart(ctx *cli.Context) error {
 	// Get the alias parameter from cli
 	args := ctx.Args()
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(args.Get(0))
 	fatalIf(err, "Unable to initialize admin connection.")
 	info, e := client.SiteReplicationInfo(globalContext)

@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Copyright (c) 2015-2024 MinIO, Inc.
+# Copyright (c) 2015-2024 Hanzo AI, Inc.
 #
-# This file is part of MinIO Object Storage stack
+# This file is part of Hanzo S3 stack
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -20,16 +20,16 @@
 
 ################################################################################
 #
-# This script is usable by mc functional tests, mint tests and MinIO verification
+# This script is usable by mc functional tests, mint tests and Hanzo S3 verification
 # tests.
 #
 # * As mc functional tests, just run this script.  It uses mc executable binary
-#   in current working directory or in the path.  The tests uses play.min.io
-#   as MinIO server.
+#   in current working directory or in the path.  The tests uses s3.hanzo.ai
+#   as Hanzo S3 server.
 #
 # * For other, call this script with environment variables MINT_MODE,
 #   MINT_DATA_DIR, SERVER_ENDPOINT, ACCESS_KEY, SECRET_KEY and ENABLE_HTTPS. It
-#   uses mc executable binary in current working directory and uses given MinIO
+#   uses mc executable binary in current working directory and uses given Hanzo S3
 #   server to run tests. MINT_MODE is set by mint to specify what category of
 #   tests to run.
 #
@@ -62,7 +62,7 @@ if [ -n "$MINT_MODE" ]; then
 fi
 
 if [ -z "${SERVER_ENDPOINT+x}" ]; then
-	SERVER_ENDPOINT="play.min.io"
+	SERVER_ENDPOINT="s3.hanzo.ai"
 	ACCESS_KEY="Q3AM3UQ867SPQQA43P2F"
 	SECRET_KEY="zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
 	ENABLE_HTTPS=1
@@ -90,8 +90,8 @@ if [ "$ENABLE_HTTPS" != "1" ]; then
 	ENDPOINT="http://$SERVER_ENDPOINT"
 fi
 
-SERVER_ALIAS="myminio"
-SERVER_ALIAS_TLS="myminio-ssl"
+SERVER_ALIAS="mys3"
+SERVER_ALIAS_TLS="mys3-ssl"
 
 BUCKET_NAME="mc-test-bucket-$RANDOM"
 WATCH_OUT_FILE="$WORK_DIR/watch.out-$RANDOM"

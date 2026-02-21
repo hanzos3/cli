@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ var idpSubcommands = []cli.Command{
 
 var idpCmd = cli.Command{
 	Name:            "idp",
-	Usage:           "manage MinIO IDentity Provider server configuration",
+	Usage:           "manage Hanzo S3 IDentity Provider server configuration",
 	Action:          mainIDP,
 	Before:          setGlobalsFromContext,
 	Flags:           globalFlags,

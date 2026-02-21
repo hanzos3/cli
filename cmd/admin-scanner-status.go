@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -78,7 +78,7 @@ var adminScannerInfo = cli.Command{
 	Name:            "status",
 	Aliases:         []string{"info"},
 	HiddenAliases:   true,
-	Usage:           "summarize scanner events on MinIO server in real-time",
+	Usage:           "summarize scanner events on Hanzo S3 server in real-time",
 	Action:          mainAdminScannerInfo,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,
@@ -95,7 +95,7 @@ FLAGS:
   {{end}}
 EXAMPLES:
    1. Display current in-progress all scanner operations.
-      {{.Prompt}} {{.HelpName}} myminio/
+      {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -245,7 +245,7 @@ func mainAdminScannerInfo(ctx *cli.Context) error {
 		os.Exit(0)
 	}
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	aliasedURL := ctx.Args().Get(0)
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

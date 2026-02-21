@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -53,11 +53,11 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Reset MQTT notifcation target 'name1' settings to default values.
-     {{.Prompt}} {{.HelpName}} myminio/ notify_mqtt:name1
+     {{.Prompt}} {{.HelpName}} mys3/ notify_mqtt:name1
   2. Reset compression's 'extensions' setting to default value.
-     {{.Prompt}} {{.HelpName}} myminio/ compression extensions
+     {{.Prompt}} {{.HelpName}} mys3/ compression extensions
   3. Reset site name and site region to default values.
-     {{.Prompt}} {{.HelpName}} myminio/ site name region
+     {{.Prompt}} {{.HelpName}} mys3/ site name region
 `,
 }
 
@@ -110,7 +110,7 @@ func mainAdminConfigReset(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

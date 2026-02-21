@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -91,13 +91,13 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Update credentials for an existing Azure Blob Storage remote tier:
-     {{.Prompt}} {{.HelpName}} myminio AZTIER --account-key ACCOUNT-KEY
+     {{.Prompt}} {{.HelpName}} mys3 AZTIER --account-key ACCOUNT-KEY
 
   2. Update credentials for an existing AWS S3 compatible remote tier:
-     {{.Prompt}} {{.HelpName}} myminio S3TIER --access-key ACCESS-KEY --secret-key SECRET-KEY
+     {{.Prompt}} {{.HelpName}} mys3 S3TIER --access-key ACCESS-KEY --secret-key SECRET-KEY
 
   3. Update credentials for an existing Google Cloud Storage remote tier:
-     {{.Prompt}} {{.HelpName}} myminio GCSTIER --credentials-file /path/to/credentials.json
+     {{.Prompt}} {{.HelpName}} mys3 GCSTIER --credentials-file /path/to/credentials.json
 `,
 }
 
@@ -122,7 +122,7 @@ func mainAdminTierEdit(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	tierName := args.Get(1)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, cerr := newAdminClient(aliasedURL)
 	fatalIf(cerr, "Unable to initialize admin connection.")
 

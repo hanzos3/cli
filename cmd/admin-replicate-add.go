@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -54,10 +54,10 @@ FLAGS:
 
 EXAMPLES:
   1. Add a site for cluster-level replication:
-     {{.Prompt}} {{.HelpName}} minio1 minio2
+     {{.Prompt}} {{.HelpName}} site1 site2
 
   2. Add a site for cluster-level replication with replication of ILM expiry rules:
-     {{.Prompt}} {{.HelpName}} minio1 minio2 --replicate-ilm-expiry
+     {{.Prompt}} {{.HelpName}} site1 site2 --replicate-ilm-expiry
 `,
 }
 
@@ -98,7 +98,7 @@ func mainAdminReplicateAdd(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

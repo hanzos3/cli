@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -73,7 +73,7 @@ var errInvalidAlias = func(alias string) *probe.Error {
 type invalidURLErr error
 
 var errInvalidURL = func(URL string) *probe.Error {
-	msg := "URL `" + URL + "` for MinIO Client should be of the form scheme://host[:port]/ without resource component."
+	msg := "URL `" + URL + "` for Hanzo S3 Client should be of the form scheme://host[:port]/ without resource component."
 	return probe.NewError(invalidURLErr(errors.New(msg)))
 }
 

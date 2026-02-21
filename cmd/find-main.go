@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -87,11 +87,11 @@ var (
 		},
 		cli.StringSliceFlag{
 			Name:  "metadata",
-			Usage: "match metadata with RE2 regex pattern. Specify each with key=regex. MinIO server only.",
+			Usage: "match metadata with RE2 regex pattern. Specify each with key=regex. Hanzo S3 server only.",
 		},
 		cli.StringSliceFlag{
 			Name:  "tags",
-			Usage: "match tags with RE2 regex pattern. Specify each with key=regex. MinIO server only.",
+			Usage: "match tags with RE2 regex pattern. Specify each with key=regex. Hanzo S3 server only.",
 		},
 	}
 )
@@ -193,7 +193,7 @@ func checkFindSyntax(ctx context.Context, cliCtx *cli.Context, encKeyDB map[stri
 	for _, url := range args {
 		_, _, err := url2Stat(ctx, url2StatOptions{urlStr: url, versionID: "", fileAttr: false, encKeyDB: encKeyDB, timeRef: time.Time{}, isZip: false, ignoreBucketExistsCheck: false})
 		if err != nil {
-			// Bucket name empty is a valid error for 'find myminio' unless we are using watch, treat it as such.
+			// Bucket name empty is a valid error for 'find mys3' unless we are using watch, treat it as such.
 			if _, ok := err.ToGoError().(BucketNameEmpty); ok && !cliCtx.Bool("watch") {
 				continue
 			}

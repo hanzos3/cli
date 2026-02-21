@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -72,7 +72,7 @@ func (c *configV10) setAlias(alias string, cfg aliasConfigV10) {
 
 // load default values for missing entries.
 func (c *configV10) loadDefaults() {
-	// MinIO server running locally.
+	// Hanzo S3 server running locally.
 	c.setAlias("local", aliasConfigV10{
 		URL:       "http://localhost:9000",
 		AccessKey: "",
@@ -99,9 +99,9 @@ func (c *configV10) loadDefaults() {
 		Path:      "dns",
 	})
 
-	// MinIO anonymous server for demo.
+	// Hanzo S3 anonymous server for demo.
 	c.setAlias("play", aliasConfigV10{
-		URL:       "https://play.min.io",
+		URL:       "https://s3.hanzo.ai",
 		AccessKey: "Q3AM3UQ867SPQQA43P2F",
 		SecretKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG",
 		API:       "S3v4",

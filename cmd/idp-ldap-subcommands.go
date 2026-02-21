@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -44,7 +44,7 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Create LDAP IDentity Provider configuration.
-     {{.Prompt}} {{.HelpName}} myminio/ \
+     {{.Prompt}} {{.HelpName}} mys3/ \
           server_addr=myldapserver:636 \
           lookup_bind_dn=cn=admin,dc=min,dc=io \
           lookup_bind_password=somesecret \
@@ -64,7 +64,7 @@ func mainIDPLDAPAdd(ctx *cli.Context) error {
 
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
@@ -127,7 +127,7 @@ func mainIDPLDAPUpdate(ctx *cli.Context) error {
 
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

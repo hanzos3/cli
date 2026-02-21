@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2025 MinIO, Inc.
+// Copyright (c) 2015-2025 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -59,16 +59,16 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Revoke all STS accounts for user "user1"
-	 {{.Prompt}} {{.HelpName}} myminio user1 --all
+	 {{.Prompt}} {{.HelpName}} mys3 user1 --all
 
   2. Revoke STS accounts of a token type "app-1" for user "user1"
-	 {{.Prompt}} {{.HelpName}} myminio user1 --token-type app-1
+	 {{.Prompt}} {{.HelpName}} mys3 user1 --token-type app-1
 
   3. Revoke all STS accounts for the authenticated user
-	 {{.Prompt}} {{.HelpName}} myminio --self
+	 {{.Prompt}} {{.HelpName}} mys3 --self
 
   4. Revoke STS accounts of a token type "app-1" for the authenticated user
-	 {{.Prompt}} {{.HelpName}} myminio --self --token-type app-1
+	 {{.Prompt}} {{.HelpName}} mys3 --self --token-type app-1
 `,
 }
 
@@ -129,7 +129,7 @@ func mainAdminAccesskeySTSRevoke(ctx *cli.Context) error {
 	tokenRevokeType := ctx.String("token-type")
 	fullRevoke := ctx.Bool("all")
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

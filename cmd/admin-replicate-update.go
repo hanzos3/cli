@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -84,16 +84,16 @@ FLAGS:
 
 EXAMPLES:
   1. Edit a site endpoint participating in cluster-level replication:
-     {{.Prompt}} {{.HelpName}} myminio --deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64 --endpoint https://minio2:9000
+     {{.Prompt}} {{.HelpName}} mys3 --deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64 --endpoint https://site2:9000
 
-  2. Set default bucket bandwidth limit for replication from myminio to the peer cluster with deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64
-     {{.Prompt}} {{.HelpName}} myminio --deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64 --bucket-bandwidth "2G"
+  2. Set default bucket bandwidth limit for replication from mys3 to the peer cluster with deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64
+     {{.Prompt}} {{.HelpName}} mys3 --deployment-id c1758167-4426-454f-9aae-5c3dfdf6df64 --bucket-bandwidth "2G"
 
   3. Disable replication of ILM expiry in cluster-level replication:
-     {{.Prompt}} {{.HelpName}} myminio --disable-ilm-expiry-replication
+     {{.Prompt}} {{.HelpName}} mys3 --disable-ilm-expiry-replication
 
   4. Enable replication of ILM expiry in cluster-level replication:
-     {{.Prompt}} {{.HelpName}} myminio --enable-ilm-expiry-replication
+     {{.Prompt}} {{.HelpName}} mys3 --enable-ilm-expiry-replication
 `,
 }
 
@@ -135,7 +135,7 @@ func mainAdminReplicateUpdate(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

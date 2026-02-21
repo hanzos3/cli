@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -49,11 +49,11 @@ FLAGS:
   {{end}}
 
 EXAMPLES:
-  1. Prints per-tier statistics of all remote tier targets configured on 'myminio':
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Prints per-tier statistics of all remote tier targets configured on 'mys3':
+     {{.Prompt}} {{.HelpName}} mys3
 
   2. Print per-tier statistics of given tier name 'MINIOTIER-1':
-     {{.Prompt}} {{.HelpName}} myminio MINIOTIER-1
+     {{.Prompt}} {{.HelpName}} mys3 MINIOTIER-1
 `,
 }
 
@@ -149,7 +149,7 @@ func mainAdminTierInfo(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	tier := args.Get(1)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, cerr := newAdminClient(aliasedURL)
 	fatalIf(cerr, "Unable to initialize admin connection.")
 

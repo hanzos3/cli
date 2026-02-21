@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -81,13 +81,13 @@ EXAMPLES:
      {{.Prompt}} {{.HelpName}} /mnt/sdb/mydisk /mnt/sdc/mydisk /mnt/sdd/mydisk
 
   6. Ignore if bucket/directory already exists.
-     {{.Prompt}} {{.HelpName}} --ignore-existing myminio/mynewbucket
+     {{.Prompt}} {{.HelpName}} --ignore-existing mys3/mynewbucket
 
   7. Create a new bucket on Amazon S3 cloud storage in region 'us-west-2' with object lock enabled.
      {{.Prompt}} {{.HelpName}} --with-lock --region=us-west-2 s3/myregionbucket
 
-  8. Create a new bucket on MinIO with versioning enabled.
-     {{.Prompt}} {{.HelpName}} --with-versioning myminio/myversionedbucket
+  8. Create a new bucket on Hanzo S3 with versioning enabled.
+     {{.Prompt}} {{.HelpName}} --with-versioning mys3/myversionedbucket
 `,
 }
 

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -43,7 +43,7 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Describe current batch job definition:
-     {{.Prompt}} {{.HelpName}} myminio KwSysDpxcBU9FNhGkn2dCf
+     {{.Prompt}} {{.HelpName}} mys3 KwSysDpxcBU9FNhGkn2dCf
 `,
 }
 
@@ -63,7 +63,7 @@ func mainBatchDescribe(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	jobID := args.Get(1)
 
-	// Start a new MinIO Admin Client
+	// Start a new Hanzo S3 Admin Client
 	adminClient, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

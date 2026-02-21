@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -397,7 +397,7 @@ func migrateConfigV6ToV7() {
 }
 
 // Migrate config version `7` to `8'. Remove hosts
-// 'play.min.io:9002' and 'dl.min.io:9000'.
+// 's3.hanzo.ai:9002' and 's3.hanzo.ai:9000'.
 func migrateConfigV7ToV8() {
 	if !isMcConfigExists() {
 		return

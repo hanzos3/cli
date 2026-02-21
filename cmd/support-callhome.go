@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -47,14 +47,14 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Enable callhome for cluster with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} enable myminio
+  1. Enable callhome for cluster with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} enable mys3
 
-  2. Disable callhome for cluster with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} disable myminio
+  2. Disable callhome for cluster with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} disable mys3
 
-  3. Check callhome status for cluster with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} status myminio
+  3. Check callhome status for cluster with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} status mys3
 `,
 }
 
@@ -109,12 +109,12 @@ func toggleCallhome(alias, arg string) {
 }
 
 func setCallhomeConfig(alias string, enableCallhome bool) {
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(alias)
 	fatalIf(err, "Unable to initialize admin connection.")
 
 	if !minioConfigSupportsSubSys(client, "callhome") {
-		fatal(errDummy().Trace(), "Your version of MinIO doesn't support this configuration")
+		fatal(errDummy().Trace(), "Your version of Hanzo S3 doesn't support this configuration")
 	}
 
 	enableStr := "off"
@@ -123,5 +123,5 @@ func setCallhomeConfig(alias string, enableCallhome bool) {
 	}
 	configStr := "callhome enable=" + enableStr
 	_, e := client.SetConfigKV(globalContext, configStr)
-	fatalIf(probe.NewError(e), "Unable to set callhome config on minio")
+	fatalIf(probe.NewError(e), "Unable to set callhome config on Hanzo S3")
 }

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -157,7 +157,7 @@ func fixConfigV6ForHosts() {
 		// If host entry does not contain "http(s)", introduce a new entry and delete the old one.
 		if host == "s3.amazonaws.com" || host == "storage.googleapis.com" ||
 			host == "localhost:9000" || host == "127.0.0.1:9000" ||
-			host == "play.min.io:9000" || host == "dl.min.io:9000" {
+			host == "s3.hanzo.ai:9000" {
 			console.Infoln("Found broken host entries, replacing " + host + " with https://" + host + ".")
 			url.Host = host
 			url.Scheme = "https"

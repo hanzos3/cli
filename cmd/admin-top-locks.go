@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -36,7 +36,7 @@ var topLocksFlag = []cli.Flag{
 
 var adminTopLocksCmd = cli.Command{
 	Name:         "locks",
-	Usage:        "get a list of the 10 oldest locks on a MinIO cluster.",
+	Usage:        "get a list of the 10 oldest locks on a Hanzo S3 cluster.",
 	Before:       setGlobalsFromContext,
 	Action:       mainAdminTopLocks,
 	OnUsageError: onUsageError,

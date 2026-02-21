@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -73,19 +73,19 @@ FLAGS:
 
 EXAMPLES:
   1. Show object retention for a specific object
-     $ {{.HelpName}} myminio/mybucket/prefix/obj.csv
+     $ {{.HelpName}} mys3/mybucket/prefix/obj.csv
 
   2. Show object retention for recursively for all objects at a given prefix
-     $ {{.HelpName}} myminio/mybucket/prefix --recursive
+     $ {{.HelpName}} mys3/mybucket/prefix --recursive
 
   3. Show object retention to a specific version of a specific object
-     $ {{.HelpName}} myminio/mybucket/prefix/obj.csv --version-id "3Jr2x6fqlBUsVzbvPihBO3HgNpgZgAnp"
+     $ {{.HelpName}} mys3/mybucket/prefix/obj.csv --version-id "3Jr2x6fqlBUsVzbvPihBO3HgNpgZgAnp"
 
   4. Show object retention for recursively for all versions of all objects under prefix
-     $ {{.HelpName}} myminio/mybucket/prefix --recursive --versions
+     $ {{.HelpName}} mys3/mybucket/prefix --recursive --versions
 
   5. Show default lock retention configuration for a bucket
-     $ {{.HelpName}} myminio/mybucket/ --default
+     $ {{.HelpName}} mys3/mybucket/ --default
 `,
 }
 

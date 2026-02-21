@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -90,13 +90,13 @@ EXAMPLES:
   3. Put an object from local file system to S3 bucket under a prefix
      {{.Prompt}} {{.HelpName}} path-to/object play/mybucket/object-prefix/
 
-  4. Put an object to MinIO storage using sse-c encryption
+  4. Put an object to Hanzo S3 storage using sse-c encryption
      {{.Prompt}} {{.HelpName}} --enc-c "play/mybucket/object=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" path-to/object play/mybucket/object 
 
-  5. Put an object to MinIO storage using sse-kms encryption
+  5. Put an object to Hanzo S3 storage using sse-kms encryption
      {{.Prompt}} {{.HelpName}} --enc-kms path-to/object play/mybucket/object
 
-  6. Put an object to MinIO storage and assign REDUCED_REDUNDANCY storage-class to the uploaded object.
+  6. Put an object to Hanzo S3 storage and assign REDUCED_REDUNDANCY storage-class to the uploaded object.
       {{.Prompt}} {{.HelpName}} --storage-class REDUCED_REDUNDANCY myobject.txt play/mybucket
 `,
 }

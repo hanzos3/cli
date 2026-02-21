@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ import (
 
 var adminServiceStopCmd = cli.Command{
 	Name:         "stop",
-	Usage:        "stop a MinIO cluster",
+	Usage:        "stop a Hanzo S3 cluster",
 	Action:       mainAdminServiceStop,
 	OnUsageError: onUsageError,
 	Before:       setGlobalsFromContext,
@@ -43,7 +43,7 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Stop MinIO server represented by its alias 'play'.
+  1. Stop Hanzo S3 server represented by its alias 'play'.
      {{.Prompt}} {{.HelpName}} play/
 `,
 }
@@ -88,7 +88,7 @@ func mainAdminServiceStop(ctx *cli.Context) error {
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
-	// Stop the specified MinIO server
+	// Stop the specified Hanzo S3 server
 	fatalIf(probe.NewError(client.ServiceStopV2(globalContext)), "Unable to stop the server.")
 
 	// Success..

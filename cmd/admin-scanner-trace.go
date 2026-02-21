@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -64,7 +64,7 @@ var adminScannerTraceFlags = []cli.Flag{
 
 var adminScannerTraceCmd = cli.Command{
 	Name:            "trace",
-	Usage:           "show trace for MinIO scanner operations",
+	Usage:           "show trace for Hanzo S3 scanner operations",
 	Action:          mainAdminScannerTrace,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,
@@ -88,26 +88,26 @@ UNITS
   also accepted. Without suffixes the unit is bytes.
 
 EXAMPLES:
-  1. Show scanner trace for MinIO server
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Show scanner trace for Hanzo S3 server
+     {{.Prompt}} {{.HelpName}} mys3
 
   2. Show scanner trace for a specific path
-    {{.Prompt}} {{.HelpName}} --path my-bucket/my-prefix/* myminio
+    {{.Prompt}} {{.HelpName}} --path my-bucket/my-prefix/* mys3
 
   3. Show trace for only ScanObject operations
-    {{.Prompt}} {{.HelpName}} --funcname=scanner.ScanObject myminio
+    {{.Prompt}} {{.HelpName}} --funcname=scanner.ScanObject mys3
 
   4. Avoid printing replication related S3 requests
-    {{.Prompt}} {{.HelpName}} --request-header '!X-Minio-Source' myminio
+    {{.Prompt}} {{.HelpName}} --request-header '!X-Minio-Source' mys3
 
   5. Show trace only for ScanObject operations request bytes greater than 1MB
-    {{.Prompt}} {{.HelpName}} --filter-request --filter-size 1MB myminio
+    {{.Prompt}} {{.HelpName}} --filter-request --filter-size 1MB mys3
 
   6. Show trace only for ScanObject operations response bytes greater than 1MB
-    {{.Prompt}} {{.HelpName}} --filter-response --filter-size 1MB myminio
+    {{.Prompt}} {{.HelpName}} --filter-response --filter-size 1MB mys3
   
   7. Show trace only for requests operations duration greater than 5ms
-    {{.Prompt}} {{.HelpName}} --response-duration 5ms myminio
+    {{.Prompt}} {{.HelpName}} --response-duration 5ms mys3
 `,
 }
 
@@ -148,7 +148,7 @@ func mainAdminScannerTrace(ctx *cli.Context) error {
 	for _, c := range colors {
 		console.SetColor(fmt.Sprintf("Node%d", c), color.New(c))
 	}
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

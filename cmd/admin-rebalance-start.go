@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -44,8 +44,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 xEXAMPLES:
-  1. Start rebalance on a MinIO deployment with alias myminio
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Start rebalance on a Hanzo S3 deployment with alias mys3
+     {{.Prompt}} {{.HelpName}} mys3
 `,
 }
 
@@ -76,7 +76,7 @@ func mainAdminRebalanceStart(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client")
 

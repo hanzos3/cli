@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -45,14 +45,14 @@ var adminClusterIAMImportCmd = cli.Command{
   {{.HelpName}} - {{.Usage}}
 
 USAGE:
-  {{.HelpName}} [FLAGS] TARGET/BUCKET /path/to/myminio-iam-info.zip
+  {{.HelpName}} [FLAGS] TARGET/BUCKET /path/to/mys3-iam-info.zip
 
 FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
   1. Set IAM info from previously exported metadata zip file.
-     {{.Prompt}} {{.HelpName}} myminio /tmp/myminio-iam-info.zip
+     {{.Prompt}} {{.HelpName}} mys3 /tmp/mys3-iam-info.zip
 
 `,
 }
@@ -209,7 +209,7 @@ func mainClusterIAMImport(ctx *cli.Context) error {
 	fatalIf(probe.NewError(e).Trace(args...), "Unable to get IAM info")
 	defer f.Close()
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

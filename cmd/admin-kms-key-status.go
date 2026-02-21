@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -44,9 +44,9 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Get default master key and its status from a MinIO server/cluster.
+  1. Get default master key and its status from a Hanzo S3 server/cluster.
      $ {{.HelpName}} play
-  2. Get the status of one particular master key from a MinIO server/cluster.
+  2. Get the status of one particular master key from a Hanzo S3 server/cluster.
      $ {{.HelpName}} play my-master-key
 `,
 }

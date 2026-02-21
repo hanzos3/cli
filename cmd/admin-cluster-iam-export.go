@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -61,10 +61,10 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Download all IAM metadata for cluster into zip file.
-     {{.Prompt}} {{.HelpName}} myminio
+     {{.Prompt}} {{.HelpName}} mys3
 
   2. Download all IAM metadata to a custom file.
-     {{.Prompt}} {{.HelpName}} myminio --output /tmp/myminio-iam.zip
+     {{.Prompt}} {{.HelpName}} mys3 --output /tmp/mys3-iam.zip
 `,
 }
 
@@ -86,7 +86,7 @@ func mainClusterIAMExport(ctx *cli.Context) error {
 
 	console.SetColor("File", color.New(color.FgWhite, color.Bold))
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

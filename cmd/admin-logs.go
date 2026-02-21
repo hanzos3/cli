@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -48,7 +48,7 @@ var logsShowFlags = []cli.Flag{
 
 var adminLogsCmd = cli.Command{
 	Name:            "logs",
-	Usage:           "show MinIO logs",
+	Usage:           "show Hanzo S3 logs",
 	OnUsageError:    onUsageError,
 	Action:          mainAdminLogs,
 	Before:          setGlobalsFromContext,
@@ -62,12 +62,12 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Show logs for a MinIO server with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} myminio
-  2. Show last 5 log entries for node 'node1' for a MinIO server with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} --last 5 myminio node1
-  3. Show application errors in logs for a MinIO server with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} --type application myminio
+  1. Show logs for a Hanzo S3 server with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} mys3
+  2. Show last 5 log entries for node 'node1' for a Hanzo S3 server with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} --last 5 mys3 node1
+  3. Show application errors in logs for a Hanzo S3 server with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} --type application mys3
 `,
 }
 
@@ -183,7 +183,7 @@ func mainAdminLogs(ctx *cli.Context) error {
 	if logType != "minio" && logType != "application" && logType != "all" {
 		fatalIf(errInvalidArgument().Trace(ctx.Args()...), "Invalid value for --type flag. Valid options are [minio, application, all]")
 	}
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

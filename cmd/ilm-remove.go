@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -64,12 +64,12 @@ DESCRIPTION:
   all the lifecycle rules on a bucket with '--all --force' option.
 
 EXAMPLES:
-  1. Remove the lifecycle management configuration rule given by ID "bgrt1ghju" for mybucket on alias 'myminio'. ID is case sensitive.
-     {{.Prompt}} {{.HelpName}} --id "bgrt1ghju" myminio/mybucket
+  1. Remove the lifecycle management configuration rule given by ID "bgrt1ghju" for mybucket on alias 'mys3'. ID is case sensitive.
+     {{.Prompt}} {{.HelpName}} --id "bgrt1ghju" mys3/mybucket
 
-  2. Remove ALL the lifecycle management configuration rules for mybucket on alias 'myminio'.
+  2. Remove ALL the lifecycle management configuration rules for mybucket on alias 'mys3'.
      Because the result is complete removal, the use of --force flag is enforced.
-     {{.Prompt}} {{.HelpName}} --all --force myminio/mybucket
+     {{.Prompt}} {{.HelpName}} --all --force mys3/mybucket
 `,
 }
 

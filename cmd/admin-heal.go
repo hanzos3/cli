@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -110,7 +110,7 @@ var adminHealFlags = []cli.Flag{
 
 var adminHealCmd = cli.Command{
 	Name:            "heal",
-	Usage:           "monitor healing for bucket(s) and object(s) on MinIO server",
+	Usage:           "monitor healing for bucket(s) and object(s) on Hanzo S3 server",
 	Action:          mainAdminHeal,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,
@@ -126,8 +126,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Monitor healing status on a running server at alias 'myminio':
-     {{.Prompt}} {{.HelpName}} myminio/
+  1. Monitor healing status on a running server at alias 'mys3':
+     {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -668,7 +668,7 @@ func mainAdminHeal(ctx *cli.Context) error {
 	console.SetColor("DiskFailed", color.New(color.FgRed, color.Bold))
 	console.SetColor("NodeFailed", color.New(color.FgRed, color.Bold))
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	adminClnt, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -45,7 +45,7 @@ var adminInfoFlags = []cli.Flag{
 
 var adminInfoCmd = cli.Command{
 	Name:         "info",
-	Usage:        "display MinIO server information",
+	Usage:        "display Hanzo S3 server information",
 	Action:       mainAdminInfo,
 	OnUsageError: onUsageError,
 	Before:       setGlobalsFromContext,
@@ -60,7 +60,7 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Get server information of the 'play' MinIO server.
+  1. Get server information of the 'play' Hanzo S3 server.
      {{.Prompt}} {{.HelpName}} play/
 `,
 }
@@ -173,7 +173,7 @@ func (u clusterStruct) String() (msg string) {
 
 	// Loop through each server and put together info for each one
 	for _, srv := range u.Info.Servers {
-		// Check if MinIO server is not online ("Mode" field),
+		// Check if Hanzo S3 server is not online ("Mode" field),
 		if srv.State != string(madmin.ItemOnline) {
 			totalOfflineNodes++
 			// "PrintB" is color blue in console library package
@@ -383,7 +383,7 @@ func mainAdminInfo(ctx *cli.Context) error {
 	args := ctx.Args()
 	aliasedURL := args.Get(0)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

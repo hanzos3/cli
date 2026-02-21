@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ var adminClusterSubcommands = []cli.Command{
 
 var adminClusterCmd = cli.Command{
 	Name:            "cluster",
-	Usage:           "manage MinIO cluster metadata",
+	Usage:           "manage Hanzo S3 cluster metadata",
 	Action:          mainAdminCluster,
 	Before:          setGlobalsFromContext,
 	Flags:           globalFlags,

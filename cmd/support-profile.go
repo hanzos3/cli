@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -97,17 +97,17 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Profile CPU for 10 seconds on cluster with alias 'myminio' and upload results to SUBNET
-     {{.Prompt}} {{.HelpName}} --type cpu myminio
+  1. Profile CPU for 10 seconds on cluster with alias 'mys3' and upload results to SUBNET
+     {{.Prompt}} {{.HelpName}} --type cpu mys3
 
-  2. Profile CPU, Memory, Goroutines for 10 seconds on cluster with alias 'myminio' and upload results to SUBNET
-     {{.Prompt}} {{.HelpName}} --type cpu,mem,goroutines myminio
+  2. Profile CPU, Memory, Goroutines for 10 seconds on cluster with alias 'mys3' and upload results to SUBNET
+     {{.Prompt}} {{.HelpName}} --type cpu,mem,goroutines mys3
 
-  3. Profile CPU, Memory, Goroutines for 10 minutes on cluster with alias 'myminio' and upload results to SUBNET
-     {{.Prompt}} {{.HelpName}} --type cpu,mem,goroutines --duration 600 myminio
+  3. Profile CPU, Memory, Goroutines for 10 minutes on cluster with alias 'mys3' and upload results to SUBNET
+     {{.Prompt}} {{.HelpName}} --type cpu,mem,goroutines --duration 600 mys3
 
-  4. Profile CPU for 10 seconds on cluster with alias 'myminio', save and upload to SUBNET manually
-     {{.Prompt}} {{.HelpName}} --type cpu --airgap myminio
+  4. Profile CPU for 10 seconds on cluster with alias 'mys3', save and upload to SUBNET manually
+     {{.Prompt}} {{.HelpName}} --type cpu --airgap mys3
 `,
 }
 
@@ -211,7 +211,7 @@ func mainSupportProfile(ctx *cli.Context) error {
 		apiKey = validateClusterRegistered(alias, true)
 	}
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client := getClient(aliasedURL)
 
 	// Main execution

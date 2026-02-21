@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -24,7 +24,7 @@ import (
 	"github.com/minio/pkg/v3/console"
 )
 
-//   Configure an alias in MinIO Client
+//   Configure an alias in Hanzo S3 Client
 //
 //   ----
 //   NOTE: that the alias command only writes values to the config file.

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -103,11 +103,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Upload object storage, network, and drive performance analysis for cluster with alias 'myminio' to SUBNET
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Upload object storage, network, and drive performance analysis for cluster with alias 'mys3' to SUBNET
+     {{.Prompt}} {{.HelpName}} mys3
 
-  2. Run object storage, network, and drive performance tests on cluster with alias 'myminio', save and upload to SUBNET manually
-     {{.Prompt}} {{.HelpName}} myminio --airgap
+  2. Run object storage, network, and drive performance tests on cluster with alias 'mys3', save and upload to SUBNET manually
+     {{.Prompt}} {{.HelpName}} mys3 --airgap
 `,
 }
 

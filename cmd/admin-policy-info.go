@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -48,17 +48,17 @@ USAGE:
   {{.HelpName}} TARGET POLICYNAME [OPTIONS...]
 
 POLICYNAME:
-  Name of the policy on the MinIO server.
+  Name of the policy on the Hanzo S3 server.
 
 FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
   1. Show information on a given policy.
-     {{.Prompt}} {{.HelpName}} myminio writeonly
+     {{.Prompt}} {{.HelpName}} mys3 writeonly
 
   2. Show information on a given policy and write the policy JSON content to /tmp/policy.json.
-     {{.Prompt}} {{.HelpName}} myminio writeonly --policy-file /tmp/policy.json
+     {{.Prompt}} {{.HelpName}} mys3 writeonly --policy-file /tmp/policy.json
 `,
 }
 
@@ -99,7 +99,7 @@ func mainAdminPolicyInfo(ctx *cli.Context) error {
 	aliasedURL := args.Get(0)
 	policyName := args.Get(1)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection")
 

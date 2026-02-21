@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -70,11 +70,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Change the secret key of the service account 'J123C4ZXEQN8RK6ND35I' in MinIO server.
-     {{.Prompt}} {{.HelpName}} myminio/ 'J123C4ZXEQN8RK6ND35I' --secret-key 'xxxxxxx'
+  1. Change the secret key of the service account 'J123C4ZXEQN8RK6ND35I' in Hanzo S3 server.
+     {{.Prompt}} {{.HelpName}} mys3/ 'J123C4ZXEQN8RK6ND35I' --secret-key 'xxxxxxx'
 
-  2. Change the expiry of the service account 'J123C4ZXEQN8RK6ND35I' in MinIO server.
-     {{.Prompt}} {{.HelpName}} myminio/ 'J123C4ZXEQN8RK6ND35I' --expiry 2023-06-24T10:00:00-07:00
+  2. Change the expiry of the service account 'J123C4ZXEQN8RK6ND35I' in Hanzo S3 server.
+     {{.Prompt}} {{.HelpName}} mys3/ 'J123C4ZXEQN8RK6ND35I' --expiry 2023-06-24T10:00:00-07:00
 `,
 }
 
@@ -102,7 +102,7 @@ func mainAdminUserSvcAcctSet(ctx *cli.Context) error {
 	description := ctx.String("description")
 	expiry := ctx.String("expiry")
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 

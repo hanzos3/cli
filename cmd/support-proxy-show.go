@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -40,8 +40,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Show the proxy configured for cluster with alias 'myminio'
-     {{.Prompt}} {{.HelpName}} myminio
+  1. Show the proxy configured for cluster with alias 'mys3'
+     {{.Prompt}} {{.HelpName}} mys3
 `,
 }
 
@@ -85,10 +85,10 @@ func mainSupportProxyShow(ctx *cli.Context) error {
 	validateClusterRegistered(alias, false)
 
 	// Main execution
-	// get the subnet proxy config from MinIO if available
+	// get the subnet proxy config from Hanzo S3 if available
 	proxy, supported := getKeyFromSubnetConfig(alias, "proxy")
 	if !supported {
-		fatal(errDummy().Trace(), "Proxy configuration not supported in this version of MinIO.")
+		fatal(errDummy().Trace(), "Proxy configuration not supported in this version of Hanzo S3.")
 	}
 
 	printMsg(supportProxyShowMessage{Proxy: proxy})

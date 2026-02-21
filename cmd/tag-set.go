@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -81,16 +81,16 @@ EXAMPLES:
      {{.Prompt}} {{.HelpName}} --versions --rewind 7d play/testbucket/testobject "key1=value1&key2=value2&key3=value3"
 
   4. Assign tags to a bucket.
-     {{.Prompt}} {{.HelpName}} myminio/testbucket "key1=value1&key2=value2&key3=value3"
+     {{.Prompt}} {{.HelpName}} mys3/testbucket "key1=value1&key2=value2&key3=value3"
 
   5. Assign tags recursively to all the objects of subdirs of bucket.
-     {{.Prompt}} {{.HelpName}} myminio/testbucket --recursive "key1=value1&key2=value2&key3=value3"
+     {{.Prompt}} {{.HelpName}} mys3/testbucket --recursive "key1=value1&key2=value2&key3=value3"
 
   6. Assign tags recursively to all versions of all objects of subdirs of bucket.
-     {{.Prompt}} {{.HelpName}} myminio/testbucket --recursive --versions "key1=value1&key2=value2&key3=value3"
+     {{.Prompt}} {{.HelpName}} mys3/testbucket --recursive --versions "key1=value1&key2=value2&key3=value3"
 
   7. Assign tags to all the objects on a bucket, excluding folders
-     {{.Prompt}} {{.HelpName}} myminio/testbucket --exclude-folders --recursive "key1=value1&key2=value2&key3=value3"
+     {{.Prompt}} {{.HelpName}} mys3/testbucket --exclude-folders --recursive "key1=value1&key2=value2&key3=value3"
 `,
 }
 

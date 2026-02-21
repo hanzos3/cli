@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -72,14 +72,14 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Add MinIO service under "myminio" alias. For security reasons turn off bash history momentarily.
+  1. Add Hanzo S3 service under "mys3" alias. For security reasons turn off bash history momentarily.
      {{.DisableHistory}}
-     {{.Prompt}} {{.HelpName}} myminio http://localhost:9000 minio minio123
+     {{.Prompt}} {{.HelpName}} mys3 http://localhost:9000 admin adminpassword
      {{.EnableHistory}}
-  2. Add MinIO service under "myminio" alias, to use dns style bucket lookup. For security reasons
+  2. Add Hanzo S3 service under "mys3" alias, to use dns style bucket lookup. For security reasons
      turn off bash history momentarily.
      {{.DisableHistory}}
-     {{.Prompt}} {{.HelpName}} myminio http://localhost:9000 minio minio123 --api "s3v4" --path "off"
+     {{.Prompt}} {{.HelpName}} mys3 http://localhost:9000 admin adminpassword --api "s3v4" --path "off"
      {{.EnableHistory}}
   3. Add Amazon S3 storage service under "mys3" alias. For security reasons turn off bash history momentarily.
      {{.DisableHistory}}

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -42,7 +42,7 @@ var adminTopAPIFlags = []cli.Flag{
 
 var adminTopAPICmd = cli.Command{
 	Name:            "api",
-	Usage:           "summarize API events on MinIO server in real-time",
+	Usage:           "summarize API events on Hanzo S3 server in real-time",
 	Action:          mainAdminTopAPI,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,

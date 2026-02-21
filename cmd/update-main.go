@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -80,7 +80,7 @@ EXAMPLES:
 const (
 	mcReleaseTagTimeLayout = "2006-01-02T15-04-05Z"
 	mcOSARCH               = runtime.GOOS + "-" + runtime.GOARCH
-	mcReleaseURL           = "https://dl.min.io/client/mc/release/" + mcOSARCH + "/"
+	mcReleaseURL           = "https://s3.hanzo.ai/client/s3/release/" + mcOSARCH + "/"
 
 	envMinisignPubKey = "MC_UPDATE_MINISIGN_PUBKEY"
 )
@@ -172,7 +172,7 @@ func IsDCOS() bool {
 	return os.Getenv("MESOS_CONTAINER_NAME") != ""
 }
 
-// IsKubernetes returns true if MinIO is running in kubernetes.
+// IsKubernetes returns true if Hanzo S3 is running in kubernetes.
 func IsKubernetes() bool {
 	// Kubernetes env used to validate if we are
 	// indeed running inside a kubernetes pod
@@ -316,7 +316,7 @@ func getDownloadURL(customReleaseURL, releaseTag string) (downloadURL string) {
 	// Check if we are docker environment, return docker update command
 	if IsDocker() {
 		// Construct release tag name.
-		return fmt.Sprintf("docker pull minio/mc:%s", releaseTag)
+		return fmt.Sprintf("docker pull ghcr.io/hanzos3/cli:%s", releaseTag)
 	}
 
 	if customReleaseURL == "" {

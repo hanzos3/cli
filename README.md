@@ -1,14 +1,18 @@
-# MinIO Client Quickstart Guide
-[![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io) [![Go Report Card](https://goreportcard.com/badge/minio/mc)](https://goreportcard.com/report/minio/mc) [![Docker Pulls](https://img.shields.io/docker/pulls/minio/mc.svg?maxAge=604800)](https://hub.docker.com/r/minio/mc/) [![license](https://img.shields.io/badge/license-AGPL%20V3-blue)](https://github.com/minio/mc/blob/master/LICENSE)
+# Hanzo S3 CLI
 
-# Documentation
-- [MC documentation](https://docs.min.io/community/minio-object-store/reference/minio-mc.html)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hanzos3/cli)](https://goreportcard.com/report/github.com/hanzos3/cli) [![license](https://img.shields.io/badge/license-AGPL%20V3-blue)](https://github.com/hanzos3/cli/blob/main/LICENSE)
 
-MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc. It supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).
+## Documentation
+
+- [Hanzo S3 CLI documentation](https://hanzo.space/docs/cli)
+
+Hanzo S3 CLI (`s3`) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc. It supports filesystems and Amazon S3 compatible cloud storage services (AWS Signature v2 and v4).
+
+The storage server is at [github.com/hanzoai/s3](https://github.com/hanzoai/s3).
 
 ```
   alias      manage server credentials in configuration file
-  admin      manage MinIO servers
+  admin      manage Hanzo S3 servers
   anonymous  manage anonymous access to buckets and objects
   batch      manage batch jobs
   cp         copy objects
@@ -21,7 +25,7 @@ MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, c
   get        get s3 object to local
   head       display first 'n' lines of an object
   ilm        manage bucket lifecycle
-  idp        manage MinIO IDentity Provider server configuration
+  idp        manage Hanzo S3 IDentity Provider server configuration
   license    license related commands
   legalhold  manage legal hold for object(s)
   ls         list buckets and objects
@@ -45,113 +49,125 @@ MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, c
   tree       list buckets and objects in a tree format
   tag        manage tags for bucket and object(s)
   undo       undo PUT/DELETE operations
-  update     update mc to latest release
+  update     update s3 to latest release
   version    manage bucket versioning
   watch      listen for object notification events
 ```
 
 ## Docker Container
+
 ### Stable
+
 ```
-docker pull minio/mc
-docker run minio/mc ls play
+docker pull ghcr.io/hanzos3/cli
+docker run ghcr.io/hanzos3/cli ls play
 ```
 
 ### Edge
-```
-docker pull minio/mc:edge
-docker run minio/mc:edge ls play
-```
-
-**Note:** Above examples run `mc` against MinIO [_play_ environment](#test-your-setup) by default. To run `mc` against other S3 compatible servers, start the container this way:
 
 ```
-docker run -it --entrypoint=/bin/sh minio/mc
+docker pull ghcr.io/hanzos3/cli:edge
+docker run ghcr.io/hanzos3/cli:edge ls play
 ```
 
-then use the [`mc alias` command](#add-a-cloud-storage-service).
+**Note:** Above examples run `s3` against the Hanzo S3 [_play_ environment](#test-your-setup) by default. To run `s3` against other S3 compatible servers, start the container this way:
+
+```
+docker run -it --entrypoint=/bin/sh ghcr.io/hanzos3/cli
+```
+
+then use the [`s3 alias` command](#add-a-cloud-storage-service).
 
 ### GitLab CI
+
 When using the Docker container in GitLab CI, you must [set the entrypoint to an empty string](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#override-the-entrypoint-of-an-image).
 
 ```
 deploy:
   image:
-    name: minio/mc
+    name: ghcr.io/hanzos3/cli
     entrypoint: ['']
   stage: deploy
   before_script:
-    - mc alias set minio $MINIO_HOST $MINIO_ACCESS_KEY $MINIO_SECRET_KEY
+    - s3 alias set mys3 $S3_HOST $S3_ACCESS_KEY $S3_SECRET_KEY
   script:
-    - mc cp <source> <destination>
+    - s3 cp <source> <destination>
 ```
 
 ## macOS
+
 ### Homebrew
-Install mc packages using [Homebrew](http://brew.sh/)
 
 ```
-brew install minio/stable/mc
-mc --help
+brew install hanzos3/stable/s3
+s3 --help
 ```
 
 ## GNU/Linux
+
 ### Binary Download
+
 | Platform | Architecture | URL |
 | ---------- | -------- |------|
-|GNU/Linux|64-bit Intel|https://dl.min.io/client/mc/release/linux-amd64/mc |
-|GNU/Linux|64-bit PPC|https://dl.min.io/client/mc/release/linux-ppc64le/mc |
-|GNU/Linux|64-bit ARM|https://dl.min.io/client/mc/release/linux-arm64/mc |
-|Linux/s390x|S390X|https://dl.min.io/client/mc/release/linux-s390x/mc |
+| GNU/Linux | 64-bit Intel | https://s3.hanzo.ai/client/s3/release/linux-amd64/s3 |
+| GNU/Linux | 64-bit PPC | https://s3.hanzo.ai/client/s3/release/linux-ppc64le/s3 |
+| GNU/Linux | 64-bit ARM | https://s3.hanzo.ai/client/s3/release/linux-arm64/s3 |
+| Linux/s390x | S390X | https://s3.hanzo.ai/client/s3/release/linux-s390x/s3 |
 
 ```
-wget https://dl.min.io/client/mc/release/linux-amd64/mc
-chmod +x mc
-./mc --help
+wget https://s3.hanzo.ai/client/s3/release/linux-amd64/s3
+chmod +x s3
+./s3 --help
 ```
 
 ## Microsoft Windows
+
 ### Binary Download
+
 | Platform | Architecture | URL |
 | ---------- | -------- |------|
-|Microsoft Windows|64-bit Intel|https://dl.min.io/client/mc/release/windows-amd64/mc.exe |
+| Microsoft Windows | 64-bit Intel | https://s3.hanzo.ai/client/s3/release/windows-amd64/s3.exe |
 
 ```
-mc.exe --help
+s3.exe --help
 ```
 
 ## Install from Source
-Source installation is only intended for developers and advanced users. If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install). Minimum version required is [go1.22](https://golang.org/dl/#stable)
+
+Source installation is only intended for developers and advanced users. If you do not have a working Golang environment, please follow [How to install Golang](https://golang.org/doc/install). Minimum version required is [go1.22](https://golang.org/dl/#stable).
 
 ```sh
-go install github.com/minio/mc@latest
+go install github.com/hanzos3/cli@latest
 ```
 
 ## Add a Cloud Storage Service
-If you are planning to use `mc` only on POSIX compatible filesystems, you may skip this step and proceed to [everyday use](#everyday-use).
 
-To add one or more Amazon S3 compatible hosts, please follow the instructions below. `mc` stores all its configuration information in ``~/.mc/config.json`` file.
+If you are planning to use `s3` only on POSIX compatible filesystems, you may skip this step and proceed to [everyday use](#everyday-use).
+
+To add one or more Amazon S3 compatible hosts, please follow the instructions below. `s3` stores all its configuration information in ``~/.s3/config.json`` file.
 
 ```
-mc alias set <ALIAS> <YOUR-S3-ENDPOINT> <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY> --api <API-SIGNATURE> --path <BUCKET-LOOKUP-TYPE>
+s3 alias set <ALIAS> <YOUR-S3-ENDPOINT> <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY> --api <API-SIGNATURE> --path <BUCKET-LOOKUP-TYPE>
 ```
 
 `<ALIAS>` is simply a short name to your cloud storage service. S3 end-point, access and secret keys are supplied by your cloud storage provider. API signature is an optional argument. By default, it is set to "S3v4".
 
-Path is an optional argument. It is used to indicate whether dns or path style url requests are supported by the server. It accepts "on", "off" as valid values to enable/disable path style requests.. By default, it is set to "auto" and SDK automatically determines the type of url lookup to use.
+Path is an optional argument. It is used to indicate whether dns or path style url requests are supported by the server. It accepts "on", "off" as valid values to enable/disable path style requests. By default, it is set to "auto" and SDK automatically determines the type of url lookup to use.
 
-### Example - MinIO Cloud Storage
-MinIO server startup banner displays URL, access and secret keys.
+### Example - Hanzo S3 Cloud Storage
+
+Hanzo S3 server startup banner displays URL, access and secret keys.
 
 ```
-mc alias set minio http://192.168.1.51 BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
+s3 alias set mys3 http://192.168.1.51 BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
 ```
 
 ### Example - Amazon S3 Cloud Storage
+
 Get your AccessKeyID and SecretAccessKey by following [AWS Credentials Guide](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html).
 
 ```
-mc alias set s3 https://s3.amazonaws.com BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
+s3 alias set aws https://s3.amazonaws.com BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
 ```
 
 **Note**: As an IAM user on Amazon S3 you need to make sure the user has full access to the buckets or set the following restricted policy for your IAM user
@@ -182,21 +198,23 @@ mc alias set s3 https://s3.amazonaws.com BKIKJAA5BMMU2RHO6IBB V7f1CwQqAcwo80UEIJ
 ```
 
 ### Example - Google Cloud Storage
-Get your AccessKeyID and SecretAccessKey by following [Google Credentials Guide](https://cloud.google.com/storage/docs/migrating?hl=en#keys)
+
+Get your AccessKeyID and SecretAccessKey by following [Google Credentials Guide](https://cloud.google.com/storage/docs/migrating?hl=en#keys).
 
 ```
-mc alias set gcs  https://storage.googleapis.com BKIKJAA5BMMU2RHO6IBB V8f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
+s3 alias set gcs https://storage.googleapis.com BKIKJAA5BMMU2RHO6IBB V8f1CwQqAcwo80UEIJEjc5gVQUSSx5ohQ9GSrr12
 ```
 
 ## Test Your Setup
-`mc` is pre-configured with https://play.min.io, aliased as "play". It is a hosted MinIO server for testing and development purpose.  To test Amazon S3, simply replace "play" with "s3" or the alias you used at the time of setup.
+
+`s3` is pre-configured with https://s3.hanzo.ai, aliased as "play". It is a hosted Hanzo S3 server for testing and development purpose. To test Amazon S3, simply replace "play" with "aws" or the alias you used at the time of setup.
 
 *Example:*
 
-List all buckets from https://play.min.io
+List all buckets from https://s3.hanzo.ai
 
 ```
-mc ls play
+s3 ls play
 [2016-03-22 19:47:48 PDT]     0B my-bucketname/
 [2016-03-22 22:01:07 PDT]     0B mytestbucket/
 [2016-03-22 20:04:39 PDT]     0B mybucketname/
@@ -209,7 +227,7 @@ Make a bucket
 
 *Example:*
 ```
-mc mb play/mybucket
+s3 mb play/mybucket
 Bucket created successfully `play/mybucket`.
 ```
 
@@ -218,35 +236,39 @@ Copy Objects
 
 *Example:*
 ```
-mc cp myobject.txt play/mybucket
+s3 cp myobject.txt play/mybucket
 myobject.txt:    14 B / 14 B  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  100.00 % 41 B/s 0
 ```
 
 ## Everyday Use
 
 ### Shell aliases
+
 You may add shell aliases to override your common Unix tools.
 
 ```
-alias ls='mc ls'
-alias cp='mc cp'
-alias cat='mc cat'
-alias mkdir='mc mb'
-alias pipe='mc pipe'
-alias find='mc find'
+alias ls='s3 ls'
+alias cp='s3 cp'
+alias cat='s3 cat'
+alias mkdir='s3 mb'
+alias pipe='s3 pipe'
+alias find='s3 find'
 ```
 
 ### Shell autocompletion
-In case you are using bash, zsh or fish. Shell completion is embedded by default in `mc`, to install auto-completion use `mc --autocompletion`. Restart the shell, mc will auto-complete commands as shown below.
+
+In case you are using bash, zsh or fish. Shell completion is embedded by default in `s3`, to install auto-completion use `s3 --autocompletion`. Restart the shell, `s3` will auto-complete commands as shown below.
 
 ```
-mc <TAB>
+s3 <TAB>
 admin    config   diff     find     ls       mirror   policy   session  sql      update   watch
 cat      cp       event    head     mb       pipe     rm       share    stat     version
 ```
 
-## Contribute to MinIO Project
-Please follow MinIO [Contributor's Guide](https://github.com/minio/mc/blob/master/CONTRIBUTING.md)
+## Contribute
+
+Please follow the [Contributor's Guide](https://github.com/hanzos3/cli/blob/main/CONTRIBUTING.md).
 
 ## License
-Use of `mc` is governed by the GNU AGPLv3 license that can be found in the [LICENSE](https://github.com/minio/mc/blob/master/LICENSE) file.
+
+Use of `s3` is governed by the GNU AGPLv3 license that can be found in the [LICENSE](https://github.com/hanzos3/cli/blob/main/LICENSE) file.

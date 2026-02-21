@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -54,10 +54,10 @@ FLAGS:
   {{end}}
 
 EXAMPLES:
-  1. Get an object from MinIO storage to local file system
+  1. Get an object from Hanzo S3 storage to local file system
      {{.Prompt}} {{.HelpName}} play/mybucket/object path-to/object
 
-  2. Get an object from MinIO storage using encryption
+  2. Get an object from Hanzo S3 storage using encryption
      {{.Prompt}} {{.HelpName}} --enc-c "play/mybucket/object=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" play/mybucket/object path-to/object
 `,
 }

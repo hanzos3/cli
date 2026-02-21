@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -46,11 +46,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Set replication configuration from '/data/replication/config' on bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} myminio/mybucket < '/data/replication/config'
+  1. Set replication configuration from '/data/replication/config' on bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} mys3/mybucket < '/data/replication/config'
 
-  2. Import replication configuration for bucket "mybucket" on alias "myminio" from STDIN.
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  2. Import replication configuration for bucket "mybucket" on alias "mys3" from STDIN.
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 `,
 }
 

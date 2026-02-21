@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -126,19 +126,19 @@ func validateClusterRegistered(alias string, cmdTalksToSubnet bool) string {
 	return apiKey
 }
 
-// isFeatureEnabled - checks if a feature is enabled in MinIO config
+// isFeatureEnabled - checks if a feature is enabled in Hanzo S3 config
 // To be used with configs that can be switched on/off using the `enable` key
 // e.g. subSys = logger_webhook, target = logger_webhook:subnet
 // Returns true if any of the following is true
 // - `enable` is set to `on`
 // - `enable` key is not found
 // Returns false if any of the following is true
-// - given subsystem is not supported by the version of MinIO
+// - given subsystem is not supported by the version of Hanzo S3
 // - the given target doesn't exist in the config
 // - `enable` is set to `off`
 func isFeatureEnabled(alias, subSys, target string) bool {
 	client, err := newAdminClient(alias)
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	fatalIf(err, "Unable to initialize admin connection.")
 
 	if !minioConfigSupportsSubSys(client, subSys) {

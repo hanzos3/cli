@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -176,7 +176,7 @@ ENVIRONMENT VARIABLES:
   MC_ENC_S3: S3 encryption key in the form of (alias/prefix=key).
 
 EXAMPLES:
-  01. Mirror a bucket recursively from MinIO cloud storage to a bucket on Amazon S3 cloud storage.
+  01. Mirror a bucket recursively from Hanzo S3 cloud storage to a bucket on Amazon S3 cloud storage.
       {{.Prompt}} {{.HelpName}} play/photos/2014 s3/backup-photos
 
   02. Mirror a local folder recursively to Amazon S3 cloud storage.
@@ -189,13 +189,13 @@ EXAMPLES:
       {{.Prompt}} {{.HelpName}} s3\documents\2014\ C:\backup\2014
 
   05. Mirror a bucket from aliased Amazon S3 cloud storage to a local folder use '--overwrite' to overwrite destination.
-      {{.Prompt}} {{.HelpName}} --overwrite s3/miniocloud miniocloud-backup
+      {{.Prompt}} {{.HelpName}} --overwrite s3/mycloud miniocloud-backup
 
-  06. Mirror a bucket from MinIO cloud storage to a bucket on Amazon S3 cloud storage and remove any extraneous
+  06. Mirror a bucket from Hanzo S3 cloud storage to a bucket on Amazon S3 cloud storage and remove any extraneous
       files on Amazon S3 cloud storage.
       {{.Prompt}} {{.HelpName}} --remove play/photos/2014 s3/backup-photos/2014
 
-  07. Continuously mirror a local folder recursively to MinIO cloud storage. '--watch' continuously watches for
+  07. Continuously mirror a local folder recursively to Hanzo S3 cloud storage. '--watch' continuously watches for
       new objects, uploads and removes extraneous files on Amazon S3 cloud storage.
       {{.Prompt}} {{.HelpName}} --remove --watch /var/lib/backups play/backups
 
@@ -217,10 +217,10 @@ EXAMPLES:
       {{.Prompt}} {{.HelpName}} --older-than 30d s3/test ~/test
 
   13. Mirror server encrypted objects from Amazon S3 cloud storage to a bucket on Amazon S3 cloud storage
-      {{.Prompt}} {{.HelpName}} --enc-c "minio/archive=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" --enc-c "s3/archive=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5BBB" s3/archive/ minio/archive/ 
+      {{.Prompt}} {{.HelpName}} --enc-c "mys3/archive=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDA" --enc-c "s3/archive=MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5BBB" s3/archive/ mys3/archive/ 
 
   14. Update 'Cache-Control' header on all existing objects recursively.
-      {{.Prompt}} {{.HelpName}} --attr "Cache-Control=max-age=90000,min-fresh=9000" myminio/video-files myminio/video-files
+      {{.Prompt}} {{.HelpName}} --attr "Cache-Control=max-age=90000,min-fresh=9000" mys3/video-files mys3/video-files
 
   15. Mirror a local folder recursively to Amazon S3 cloud storage and preserve all local file attributes.
       {{.Prompt}} {{.HelpName}} -a backup/ s3/archive

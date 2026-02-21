@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2024 MinIO, Inc.
+// Copyright (c) 2015-2024 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -75,9 +75,9 @@ FLAGS:
   {{end}}
 EXAMPLES:
   1. Change the secret key for the access key "testkey"
-     {{.Prompt}} {{.HelpName}} myminio/ testkey --secret-key 'xxxxxxx'
+     {{.Prompt}} {{.HelpName}} mys3/ testkey --secret-key 'xxxxxxx'
   2. Change the expiry duration for the access key "testkey"
-     {{.Prompt}} {{.HelpName}} myminio/ testkey ---expiry-duration 24h
+     {{.Prompt}} {{.HelpName}} mys3/ testkey ---expiry-duration 24h
 `,
 }
 

@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -66,11 +66,11 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Get server side replication metrics for bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} myminio/mybucket
+  1. Get server side replication metrics for bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} mys3/mybucket
 
-  2. Get replication speed across nodes for bucket "mybucket" for alias "myminio".
-     {{.Prompt}} {{.HelpName}} --nodes  myminio/mybucket
+  2. Get replication speed across nodes for bucket "mybucket" for alias "mys3".
+     {{.Prompt}} {{.HelpName}} --nodes  mys3/mybucket
 `,
 }
 
@@ -305,7 +305,7 @@ func mainReplicateStatus(cliCtx *cli.Context) error {
 	// Create a new Client
 	client, err := newClient(aliasedURL)
 	fatalIf(err, "Unable to initialize connection.")
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	admClient, cerr := newAdminClient(aliasedURL)
 	fatalIf(cerr, "Unable to initialize admin connection.")
 	_, sourceBucket := url2Alias(args[0])

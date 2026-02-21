@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -31,10 +31,10 @@ func TestParseStat(t *testing.T) {
 		content     ClientContent
 		targetAlias string
 	}{
-		{ClientContent{URL: *newClientURL("https://play.min.io/abc"), Size: 0, Time: localTime, Type: os.ModeDir, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}, Expires: time.Now()}, "play"},
-		{ClientContent{URL: *newClientURL("https://play.min.io/testbucket"), Size: 500, Time: localTime, Type: os.ModeDir, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}, Expires: time.Unix(0, 0).UTC()}, "play"},
+		{ClientContent{URL: *newClientURL("https://s3.hanzo.ai/abc"), Size: 0, Time: localTime, Type: os.ModeDir, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}, Expires: time.Now()}, "play"},
+		{ClientContent{URL: *newClientURL("https://s3.hanzo.ai/testbucket"), Size: 500, Time: localTime, Type: os.ModeDir, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}, Expires: time.Unix(0, 0).UTC()}, "play"},
 		{ClientContent{URL: *newClientURL("https://s3.amazonaws.com/yrdy"), Size: 0, Time: localTime, Type: 0o644, ETag: "abcdefasaas", Metadata: map[string]string{}}, "s3"},
-		{ClientContent{URL: *newClientURL("https://play.min.io/yrdy"), Size: 10000, Time: localTime, Type: 0o644, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}}, "play"},
+		{ClientContent{URL: *newClientURL("https://s3.hanzo.ai/yrdy"), Size: 10000, Time: localTime, Type: 0o644, ETag: "blahblah", Metadata: map[string]string{"cusom-key": "custom-value"}}, "play"},
 	}
 	for _, testCase := range testCases {
 		t.Run("", func(t *testing.T) {

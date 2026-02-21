@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2022 MinIO, Inc.
+// Copyright (c) 2015-2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -44,7 +44,7 @@ func isCertsDirExists() bool {
 	return true
 }
 
-// createCertsDir - create MinIO Client certs folder
+// createCertsDir - create Hanzo S3 Client certs folder
 func createCertsDir() *probe.Error {
 	p, err := getCertsDir()
 	if err != nil {
@@ -84,7 +84,7 @@ func isCAsDirExists() bool {
 	return true
 }
 
-// createCAsDir - create MinIO Client CAs folder
+// createCAsDir - create Hanzo S3 Client CAs folder
 func createCAsDir() *probe.Error {
 	p, err := getCAsDir()
 	if err != nil {
@@ -96,7 +96,7 @@ func createCAsDir() *probe.Error {
 	return nil
 }
 
-// loadRootCAs fetches CA files provided in MinIO config and adds them to globalRootCAs
+// loadRootCAs fetches CA files provided in Hanzo S3 config and adds them to globalRootCAs
 // Currently under Windows, there is no way to load system + user CAs at the same time
 func loadRootCAs() {
 	var e error

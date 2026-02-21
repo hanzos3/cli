@@ -1,6 +1,6 @@
-// Copyright (c) 2022 MinIO, Inc.
+// Copyright (c) 2022 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ import (
 
 var adminServiceFreezeCmd = cli.Command{
 	Name:         "freeze",
-	Usage:        "freeze S3 API calls on MinIO cluster",
+	Usage:        "freeze S3 API calls on Hanzo S3 cluster",
 	Action:       mainAdminServiceFreeze,
 	OnUsageError: onUsageError,
 	Before:       setGlobalsFromContext,
@@ -43,8 +43,8 @@ FLAGS:
   {{range .VisibleFlags}}{{.}}
   {{end}}
 EXAMPLES:
-  1. Freeze all S3 API calls on MinIO server at 'myminio/'.
-     {{.Prompt}} {{.HelpName}} myminio/
+  1. Freeze all S3 API calls on Hanzo S3 server at 'mys3/'.
+     {{.Prompt}} {{.HelpName}} mys3/
 `,
 }
 
@@ -89,7 +89,7 @@ func mainAdminServiceFreeze(ctx *cli.Context) error {
 	client, err := newAdminClient(aliasedURL)
 	fatalIf(err, "Unable to initialize admin connection.")
 
-	// Freeze the specified MinIO server
+	// Freeze the specified Hanzo S3 server
 	fatalIf(probe.NewError(client.ServiceFreezeV2(globalContext)), "Unable to freeze the server.")
 
 	// Success..

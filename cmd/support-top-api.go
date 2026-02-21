@@ -1,6 +1,6 @@
-// Copyright (c) 2015-2023 MinIO, Inc.
+// Copyright (c) 2015-2023 Hanzo AI, Inc.
 //
-// This file is part of MinIO Object Storage stack
+// This file is part of Hanzo S3 stack
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
@@ -47,7 +47,7 @@ var supportTopAPIFlags = []cli.Flag{
 
 var supportTopAPICmd = cli.Command{
 	Name:            "api",
-	Usage:           "summarize API events on MinIO server in real-time",
+	Usage:           "summarize API events on Hanzo S3 server in real-time",
 	Action:          mainSupportTopAPI,
 	OnUsageError:    onUsageError,
 	Before:          setGlobalsFromContext,
@@ -64,10 +64,10 @@ FLAGS:
   {{end}}
 EXAMPLES:
    1. Display current in-progress all S3 API calls.
-      {{.Prompt}} {{.HelpName}} myminio/
+      {{.Prompt}} {{.HelpName}} mys3/
 
    2. Display current in-progress all 's3.PutObject' API calls.
-      {{.Prompt}} {{.HelpName}} --name s3.PutObject myminio/
+      {{.Prompt}} {{.HelpName}} --name s3.PutObject mys3/
 `,
 }
 
@@ -85,7 +85,7 @@ func mainSupportTopAPI(ctx *cli.Context) error {
 	alias, _ := url2Alias(aliasedURL)
 	validateClusterRegistered(alias, false)
 
-	// Create a new MinIO Admin Client
+	// Create a new Hanzo S3 Admin Client
 	client, err := newAdminClient(aliasedURL)
 	if err != nil {
 		fatalIf(err.Trace(aliasedURL), "Unable to initialize admin client.")

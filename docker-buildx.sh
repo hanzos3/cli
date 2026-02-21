@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Copyright (c) 2015-2023 MinIO, Inc.
+# Copyright (c) 2015-2023 Hanzo AI, Inc.
 #
-# This file is part of MinIO Object Storage stack
+# This file is part of Hanzo S3 stack
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -24,10 +24,8 @@ release=$(git describe --abbrev=0 --tags)
 
 docker buildx build --push --no-cache \
 	--build-arg RELEASE="${release}" \
-	-t "minio/mc:latest" \
-	-t "minio/mc:${release}" \
-	-t "quay.io/minio/mc:${release}" \
-	-t "quay.io/minio/mc:latest" \
+	-t "ghcr.io/hanzos3/cli:latest" \
+	-t "ghcr.io/hanzos3/cli:${release}" \
 	--platform=linux/arm64,linux/amd64,linux/ppc64le \
 	-f Dockerfile.release .
 
@@ -35,8 +33,7 @@ docker buildx prune -f
 
 docker buildx build --push --no-cache \
 	--build-arg RELEASE="${release}" \
-	-t "minio/mc:${release}-cpuv1" \
-	-t "quay.io/minio/mc:${release}-cpuv1" \
+	-t "ghcr.io/hanzos3/cli:${release}-cpuv1" \
 	--platform=linux/arm64,linux/amd64,linux/ppc64le \
 	-f Dockerfile.release.old_cpu .
 
