@@ -1,22 +1,23 @@
-FROM golang:1.22-alpine as build
+FROM golang:1.24-alpine AS build
 
 LABEL maintainer="Hanzo AI, Inc. <dev@hanzo.ai>"
 
 ENV GOPATH /go
 ENV CGO_ENABLED 0
 
+RUN apk add -U --no-cache ca-certificates git
 
-RUN apk add -U --no-cache ca-certificates
-RUN apk add -U curl
-RUN curl -s -q https://raw.githubusercontent.com/hanzos3/cli/main/LICENSE -o /go/LICENSE
-RUN curl -s -q https://raw.githubusercontent.com/hanzos3/cli/main/CREDITS -o /go/CREDITS
-RUN go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)" "github.com/minio/mc@latest"
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+RUN go build -v -ldflags "-s -w" -o /go/bin/s3 .
 
 FROM scratch
 
-COPY --from=build /go/bin/mc  /usr/bin/s3
-COPY --from=build /go/CREDITS /licenses/CREDITS
-COPY --from=build /go/LICENSE /licenses/LICENSE
+COPY --from=build /go/bin/s3 /usr/bin/s3
+COPY --from=build /src/LICENSE /licenses/LICENSE
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 ENTRYPOINT ["s3"]
