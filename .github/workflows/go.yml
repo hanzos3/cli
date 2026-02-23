@@ -47,7 +47,7 @@ jobs:
           ACCESS_KEY: minioadmin
           SECRET_KEY: minioadmin
           ENABLE_HTTPS: 1
-          MINIO_CI_CD: 1
+          S3_CI_CD: 1
           SERVER_ENDPOINT: localhost:9000
           MC_TEST_ENABLE_HTTPS: true
           MC_TEST_SKIP_INSECURE: true

@@ -480,7 +480,7 @@ func registerApp(name string) *cli.App {
 	app.Name = name
 	app.Action = func(ctx *cli.Context) error {
 		mcEnable := env.Get("MC_UPDATE", madmin.EnableOn)
-		minioEnable := env.Get("MINIO_UPDATE", madmin.EnableOn)
+		minioEnable := env.Get("S3_UPDATE", madmin.EnableOn)
 
 		if strings.HasPrefix(ReleaseTag, "RELEASE.") && (mcEnable == madmin.EnableOn || minioEnable == madmin.EnableOn) {
 			// Check for new updates from s3.hanzo.ai.

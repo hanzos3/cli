@@ -69,7 +69,7 @@ func (u configExportMessage) String() string {
 	for {
 		s, e := bio.ReadString('\n')
 		// Make lines displaying environment variables bold.
-		if strings.HasPrefix(s, "# MINIO_") {
+		if strings.HasPrefix(s, "# S3_") {
 			s = strings.TrimPrefix(s, "# ")
 			parts := strings.SplitN(s, "=", 2)
 			s = fmt.Sprintf("# %s=%s", console.Colorize("EnvVar", parts[0]), parts[1])
